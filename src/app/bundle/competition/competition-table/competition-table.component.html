@@ -1,0 +1,73 @@
+<section>
+    <div class="row">
+        <div class="col-sm-12">
+            <div ngbDropdown *ngIf="competitionSeasonTables">
+                <button class="btn btn-outline-info" id="dropdownMenu2" ngbDropdownToggle>{{ 'Matchday ' | translate }}{{ matchDay }}</button>
+                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" *ngFor="let table of competitionSeasonTables" (click)="selectMatchDay(table.matchDay)">{{ 'Matchday ' }}{{ table.matchDay }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10" *ngIf="competitionSeasonTables">
+            <ngx-datatable
+                    class="bootstrap"
+                    [rows]="rows"
+                    [rowHeight]="'auto'"
+                    [sorts]="sorts"
+                    [limit]="22">
+                <ngx-datatable-column name="#" prop="position" width="40">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="" prop="team" width="250">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="MP" prop="matches" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="W" prop="won" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="D" prop="draws" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="L" prop="lost" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="GF" prop="gf" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="GA" prop="ga" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="GD" prop="gd" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Pts" prop="points" width="70">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <strong>{{value}}</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</section>

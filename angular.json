@@ -27,9 +27,27 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/prism.min.css",
+              "src/assets/css/wizard.css",
+              "src/assets/css/quill.snow.css",
+              "src/assets/css/quill.bubble.css",
+              "src/assets/vendor/pace/themes/black/pace-theme-flash.css",
+              "src/assets/css/hopscotch.css",
+              "src/assets/css/demo.css",
+              "src/assets/sass/app.scss",
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "src/assets/fonts/feather/style.min.css",
+              "src/assets/fonts/simple-line-icons/style.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/vendor/pace/pace.min.js",
+              "src/assets/js/perfect-scrollbar.jquery.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

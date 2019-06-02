@@ -1,0 +1,39 @@
+@import '../../node_modules/@angular/material/theming';
+@include mat-core();
+
+$fb-primary: (
+  50: #E7E9F3,
+  100: #C2C7E3,
+  200: #9AA3CF,
+  300: #7380BC,
+  400: #5665AF,
+  500: #374BA2,
+  600: #324398,
+  700: #293A8D,
+  800: #213081,
+  900: #131F6B
+);
+
+$fb-accent: (
+  50: #E1F4FD,
+  100: #B3E5F9,
+  200: #81D5F4,
+  300: #50C4EB,
+  400: #2DB8E4,
+  500: #1CADDB,
+  600: #149EC8,
+  700: #008AAD,
+  800: #007794,
+  900: #005567
+);
+
+$footballapp-primary: mat-palette($fb-primary);
+$footballapp-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$footballapp-warn: mat-palette($mat-red);
+
+$footballapp-theme: mat-light-theme($footballapp-primary, $footballapp-accent, $footballapp-warn);
+
+@include angular-material-theme($footballapp-theme);
+
+

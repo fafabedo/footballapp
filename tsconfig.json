@@ -17,6 +17,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app/api-platform/*": ["src/app/api-platform/*"]
+    }
   }
 }

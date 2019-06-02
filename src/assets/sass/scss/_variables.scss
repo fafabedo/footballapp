@@ -1,0 +1,56 @@
+// Theme Colors
+//$theme-colors: (
+//        primary: #009DA0,
+//        success: #0CC27E,
+//        info: #1CBCD8,
+//        warning: #FF8D60,
+//        danger: #FF586B,
+//        secondary: #868e96,
+//        light: #f8f9fa,
+//        dark: #343a40
+//);
+$theme-colors: (
+        primary: #131f6b,
+        success: #4CAF50,
+        info: #008AAD,
+        warning: #FF8D60,
+        danger: #FF586B,
+        secondary: #868e96,
+        light: #f8f9fa,
+        dark: #343a40
+);
+
+//$primary: #3F51B5;
+$primary: #666EE8;
+$success: #06AC61;
+$info: #2196F3;
+$warning: #FF8D60;
+$danger: #FF586B;
+$secondary: #868e96;
+$light: #9FA8DA;
+$dark: #343a40;
+
+// Spacing
+
+$spacer: 1.5rem;
+
+$spacers: (
+        0: 0,
+        1: ($spacer * .25),
+        2: ($spacer * .50),
+        3: $spacer,
+        4: ($spacer * 1.5),
+        5: ($spacer * 3)
+) !default;
+
+// Sidebar
+$sidebar-color: #131f6b;
+
+// Body
+$body-bg: #f5f7fa;
+
+// Fonts
+$font-family-sans-serif: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-content: "Rubik", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$font-size-root: 16px;

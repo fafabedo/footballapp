@@ -1,0 +1,84 @@
+<section class="config-list">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <input type="text" class="form-control" placeholder='Type to filter the name column...'
+                   (keyup)='updateFilter($event)'/>
+        </div>
+        <div class="col-lg-3 fonticon-wrap">
+            <a class="btn btn-primary btn-raised" (click)="new()">New</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col1" [ngClass]="{
+            'col-lg-12': !openPanel,
+            'col-lg-4': openPanel
+            }">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">{{ 'Configurations' | translate }}</h4>
+                </div>
+                <div class="card-body">
+                    <ngx-datatable class="material"
+                                   [rows]="data"
+                                   [headerHeight]="50"
+                                   [rowHeight]="'auto'"
+                                   [columnMode]="'force'"
+                                   [selected]="selected"
+                                   [selectionType]="'single'"
+                                   [footerHeight]="50"
+                                   (select)="onSelect($event)">
+                        <ngx-datatable-column name="Name" prop="name" sortable="true">
+                            <ng-template let-value="value" ngx-datatable-cell-template>
+                                <strong>{{value}}</strong>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Collection" prop="collection" sortable="true">
+                            <ng-template let-value="value" ngx-datatable-cell-template>
+                                <strong>{{value}}</strong>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+        <div class="col2" [ngClass]="{
+            'col-lg-8': openPanel,
+            'hidden': !openPanel }">
+
+            <div class="card" *ngIf="config">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">{{ 'Record' | translate }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="col-sm-12">
+                            <label for="name">{{ 'Name' | translate }}:</label>
+                            <input type="text" class="form-control" placeholder="name" id="name" [(ngModel)]="config.name">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="collection">{{ 'Collection' | translate }}:</label>
+                            <input type="text" class="form-control" placeholder="collection" id="collection"
+                                   [(ngModel)]="config.collection">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="data">{{ 'Data' | translate }}:</label>
+                            <ace-editor id="data"
+                                    [(text)]="code"
+                                    [options]="options" style="height:250px;"></ace-editor>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-sm-12">
+                        <a class="btn btn-raised btn-primary mr-1" (click)="save()">{{ 'Save' | translate }}</a>
+                        <a class="btn btn-raised btn-primary mr-1" (click)="delete()">{{ 'Delete' | translate }}</a>
+                        <a class="btn btn-raised btn-primary mr-1" (click)="cancel()">{{ 'Cancel' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngIf="article">
+                <div class="card-body card-body-big ">
+                    <h1 class="no-mt ">{{ article.title}}</h1>
+
+                    <div [innerHTML]="article.body_1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

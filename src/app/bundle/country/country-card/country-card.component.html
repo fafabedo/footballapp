@@ -1,0 +1,15 @@
+<a (click)="navigate(country)">
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">{{country.name}}</h4>
+    </div>
+    <div class="card-body">
+        <figure *ngIf="country.image">
+            <img class="card-img-top img-fluid" src="{{ country.image | imageSrc }}" alt="{{country.name}}" />
+        </figure>
+        <div class="card-block">
+            <p class="card-text" *ngIf="country.federation">{{country.federation.shortname}}</p>
+        </div>
+    </div>
+</div>
+</a>

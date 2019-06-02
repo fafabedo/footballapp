@@ -1,0 +1,23 @@
+agm-map {
+  height: 300px;
+}
+
+.card-img figure {
+  width: 200px;
+  overflow: hidden;
+  margin: 0;
+  img {
+    display: block;
+  }
+}
+figure.fig-competition {
+  width: 160px;
+  height: 130px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    max-height: 130px;
+    display: block;
+    object-fit: contain;
+  }
+}

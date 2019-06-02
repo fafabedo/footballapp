@@ -1,0 +1,268 @@
+agm-map {
+  height: 500px; }
+
+.grid-hover figure {
+  max-width: none;
+  max-height: none; }
+
+:host /deep/ .ct-grid {
+  stroke-dasharray: 0px;
+  stroke: rgba(0, 0, 0, 0.1); }
+
+:host /deep/ .ct-label {
+  font-size: 0.9rem; }
+
+:host /deep/ .WidgetlineChart .ct-point {
+  stroke-width: 0px; }
+
+:host /deep/ .WidgetlineChart .ct-line {
+  stroke: #fff; }
+
+:host /deep/ .WidgetlineChartShadow {
+  -webkit-filter: drop-shadow(0px 15px 5px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0px 15px 5px rgba(0, 0, 0, 0.8));
+  /* Same syntax as box-shadow, except for the spread property */ }
+
+:host /deep/ .WidgetlineChart1 .ct-point {
+  stroke-width: 0px; }
+
+:host /deep/ .WidgetlineChart1 .ct-line {
+  stroke: url("/dashboard/dashboard2#widgradient") !important; }
+
+:host /deep/ .WidgetlineChart1Shadow {
+  -webkit-filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.3));
+  /* Same syntax as box-shadow, except
+  for the spread property */ }
+
+:host /deep/ .WidgetlineChart2 .ct-point {
+  stroke-width: 0px; }
+
+:host /deep/ .WidgetlineChart2 .ct-line {
+  stroke: url("/dashboard/dashboard2#widgradient1") !important; }
+
+:host /deep/ .WidgetlineChart2 .ct-grid {
+  stroke-dasharray: 0px;
+  stroke: rgba(255, 255, 255, 0.2); }
+
+:host /deep/ .WidgetlineChart2Shadow {
+  -webkit-filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.3));
+  /* Same syntax as box-shadow, except
+  for the spread property */ }
+
+:host /deep/ .donut1 .ct-label {
+  text-anchor: middle;
+  alignment-baseline: middle;
+  font-size: 60px;
+  fill: #009DA0; }
+
+:host /deep/ .donut1 .ct-outstanding .ct-slice-donut {
+  stroke: #eee; }
+
+:host /deep/ .donut1 .ct-done .ct-slice-donut {
+  stroke: #009DA0; }
+
+:host /deep/ .donut2 .ct-label {
+  text-anchor: middle;
+  alignment-baseline: middle;
+  font-size: 60px;
+  fill: #FF8D60; }
+
+:host /deep/ .donut2 .ct-outstanding .ct-slice-donut {
+  stroke: #eee; }
+
+:host /deep/ .donut2 .ct-done .ct-slice-donut {
+  stroke: #FF8D60; }
+
+:host /deep/ .donut3 .ct-label {
+  text-anchor: middle;
+  alignment-baseline: middle;
+  font-size: 60px;
+  fill: #FF586B; }
+
+:host /deep/ .donut3 .ct-outstanding .ct-slice-donut {
+  stroke: #eee; }
+
+:host /deep/ .donut3 .ct-done .ct-slice-donut {
+  stroke: #FF586A; }
+
+:host /deep/ .lineAreaChart .ct-series-a .ct-area {
+  fill: url("/dashboard/dashboard2#gradient") !important; }
+
+:host /deep/ .lineAreaChart .ct-series-b .ct-area {
+  fill: #ff8d60;
+  fill-opacity: 0.1; }
+
+:host /deep/ .lineAreaChart .ct-point-circle {
+  stroke-width: 2px;
+  fill: white; }
+
+:host /deep/ .lineAreaChart .ct-series-b .ct-point-circle {
+  stroke: #ff8d60; }
+
+:host /deep/ .lineAreaChart .ct-series-a .ct-point-circle {
+  stroke: #31afb2; }
+
+:host /deep/ .lineAreaChart .ct-line {
+  fill: none;
+  stroke-width: 1px; }
+
+:host /deep/ .lineChart2 .ct-point-circle {
+  stroke-width: 2px;
+  fill: white; }
+
+:host /deep/ .lineChart2 .ct-series-b .ct-point-circle {
+  stroke: #ff8d60; }
+
+:host /deep/ .lineChart2 .ct-series-a .ct-point-circle {
+  stroke: #31afb2; }
+
+:host /deep/ .lineChart2 .ct-line {
+  fill: none;
+  stroke-width: 1px; }
+
+:host /deep/ .lineChart2Shadow {
+  -webkit-filter: drop-shadow(0px 25px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 25px 8px rgba(0, 0, 0, 0.3));
+  /* Same syntax as box-shadow, except
+  for the spread property */ }
+
+:host /deep/ .lineChart1 .ct-line {
+  fill: none;
+  stroke-width: 3px; }
+
+:host /deep/ .lineChart1 .ct-point {
+  stroke-width: 0px; }
+
+:host /deep/ .lineChart1Shadow {
+  -webkit-filter: drop-shadow(0px 20px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 20px 6px rgba(0, 0, 0, 0.3));
+  /* Same syntax as box-shadow, except
+  for the spread property */ }
+
+@media only screen and (min-width: 600px) {
+  .headline .row {
+    padding: 10px; } }
+@media only screen and (max-width: 599px) {
+  .headline .row {
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0; } }
+.headline .row .card-inverse {
+  padding-bottom: 36px; }
+@media only screen and (min-width: 600px) {
+  .headline .row .col-12 {
+    padding-left: 7px;
+    padding-right: 7px; } }
+@media only screen and (max-width: 599px) {
+  .headline .row .col-12 {
+    padding-left: 0;
+    padding-right: 0; } }
+
+.featured .card {
+  padding-left: 0; }
+
+.featured-players .card {
+  padding-left: 0;
+  padding-right: 0; }
+.featured-players .slide {
+  width: 350px; }
+@media only screen and (max-width: 599px) {
+  .featured-players .effect-zoe {
+    margin-left: 13px !important; } }
+@media only screen and (min-width: 600px) {
+  .featured-players .effect-zoe .player-portrait {
+    height: 420px; } }
+@media only screen and (max-width: 599px) {
+  .featured-players .effect-zoe .player-portrait {
+    height: 320px; } }
+.featured-players .effect-zoe .player-portrait img {
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%; }
+
+@media only screen and (min-width: 600px) {
+  .teams-card {
+    padding: 1px 10%; } }
+@media only screen and (max-width: 599px) {
+  .teams-card {
+    padding: 1px 10px; } }
+@media only screen and (min-width: 600px) {
+  .teams-card .team-card {
+    max-width: 700px;
+    max-height: 420px; } }
+@media only screen and (max-width: 599px) {
+  .teams-card .team-card {
+    height: 260px; } }
+.teams-card .team-card .team-card-img {
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 5px solid #bdb289; }
+  .teams-card .team-card .team-card-img img {
+    visibility: hidden;
+    max-width: 100%;
+    max-height: 100%; }
+.teams-card .team-card .team-card-flag {
+  display: inline-block;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+  z-index: 1; }
+  @media only screen and (min-width: 600px) {
+    .teams-card .team-card .team-card-flag {
+      border: 5px solid #bdb289;
+      transform: translate(80%, -110%);
+      width: 200px;
+      height: 100px; } }
+  @media only screen and (max-width: 599px) {
+    .teams-card .team-card .team-card-flag {
+      border: 2px solid #bdb289;
+      transform: translate(100%, -130%);
+      width: 100px;
+      height: 60px; } }
+.teams-card .team-card .team-card-info {
+  position: relative;
+  transform: translate(0, -110%);
+  border: 5px solid #bdb289;
+  opacity: 0.95;
+  z-index: 0; }
+  @media only screen and (min-width: 600px) {
+    .teams-card .team-card .team-card-info {
+      height: 150px; } }
+  @media only screen and (max-width: 599px) {
+    .teams-card .team-card .team-card-info {
+      height: 100px; } }
+  .teams-card .team-card .team-card-info .card-name {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    width: 100%; }
+    @media only screen and (min-width: 600px) {
+      .teams-card .team-card .team-card-info .card-name {
+        min-height: 180px;
+        min-width: 500px;
+        padding-top: 60px;
+        font-size: 2rem; } }
+    @media only screen and (max-width: 599px) {
+      .teams-card .team-card .team-card-info .card-name {
+        min-height: 100px;
+        min-width: 200px;
+        padding-top: 33px;
+        font-size: 1.5rem; } }
+
+@media only screen and (min-width: 500px) {
+  .groups-more .candidates .card {
+    height: 520px; } }
+
+/*# sourceMappingURL=home.component.css.map */

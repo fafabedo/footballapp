@@ -1,0 +1,113 @@
+<section id="header" class="country-page-header" matchHeight="card">
+    <div class="row" matchHeight="card">
+        <div class="col-sm-4 col-12">
+            <div class="card horizontal">
+                <div class="card-body">
+                    <div class="card-img">
+                        <figure>
+                            <img class="card-img-top img-fluid"
+                                 src="http://apifootball.local/files//country-flags/svg/it.svg" alt="Card image cap">
+                        </figure>
+                    </div>
+                    <div class="card-stacked align-self-center">
+                        <div class="px-1" *ngIf="country">
+                            <h1 class="card-title font-large-1">{{ country.name }}</h1>
+                            <div class="card-text">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge bg-danger float-right">1</span> World cups
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-info float-right">7</span> Competitions
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-info float-right">2</span> Cups
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <!--                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5"></agm-map>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="competition" class="country-competition">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">{{ 'Competitions' | translate }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngFor="let row of competitions | chunk: 6">
+        <div class="col-sm-2 col-12" *ngFor="let competition of row">
+            <a class="link-competition" (click)="navigateCompetition(competition)">
+                <div class="card">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <figure class="fig-competition">
+                                    <img src="{{ competition.image | imageSrc }}" alt="{{ competition.name }}"
+                                         class="mb-1">
+                                </figure>
+                                <h3 class="card-title">{{ competition.name }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="international" class="country-international">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">{{ 'National teams' | translate }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngFor="let row of teams | chunk: 6">
+        <div class="col-sm-2 col-12" *ngFor="let team of row">
+            <div class="card">
+                <div class="card-body">
+                    <div class="px-3 py-3">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <span>{{ team.name }}</span>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <i class="ft-aperture font-large-1 float-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

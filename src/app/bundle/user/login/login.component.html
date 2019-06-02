@@ -1,0 +1,49 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card text-center width-400">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <h2 class="white-1">{{ 'Football' | translate }}</h2>
+                            <form novalidate="" (ngSubmit)="submitForm()" #f="ngForm">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" name="inputUsername" id="inputUsername" placeholder="Username" ngModel required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password" ngModel required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0 ml-3">
+                                                <input type="checkbox" class="custom-control-input" checked id="rememberme">
+                                                <label class="custom-control-label float-left" for="rememberme">{{ 'Remember Me' | translate }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-pink btn-block btn-raised">{{ 'Login' | translate }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-left"><a (click)="onForgotPassword()" class="white">Recover Password</a></div>
+                        <div class="float-right"><a (click)="onRegister()" class="white">New User?</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->
