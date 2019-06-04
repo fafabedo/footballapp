@@ -1,84 +1,77 @@
-<section class="config-list">
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>{{ 'Configurations' | translate }}</span>
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button class="toolbar-icon" aria-label="Add" (click)="new()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button class="toolbar-icon" aria-label="Settings">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<app-fafa-container>
     <div class="row">
+        <div class="col-sm-12">
+            <mat-form-field class="full-width">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-sm-12">
+            <table mat-table [dataSource]="data" class="mat-elevation-z2"
+                   matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+                <!-- Position Column -->
+                <ng-container matColumnDef="name" [sticky]="true">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
 
-    </div>
-    <div class="row">
-        <div class="col-lg-8">
-            <input type="text" class="form-control" placeholder='Type to filter the name column...'
-                   (keyup)='updateFilter($event)'/>
-        </div>
-        <div class="col-lg-3 fonticon-wrap">
-            <a class="btn btn-primary btn-raised" (click)="new()">New</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col1" [ngClass]="{
-            'col-lg-12': !openPanel,
-            'col-lg-4': openPanel
-            }">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">{{ 'Configurations' | translate }}</h4>
-                </div>
-                <div class="card-body">
-                    <ngx-datatable class="material"
-                                   [rows]="data"
-                                   [headerHeight]="50"
-                                   [rowHeight]="'auto'"
-                                   [columnMode]="'force'"
-                                   [selected]="selected"
-                                   [selectionType]="'single'"
-                                   [footerHeight]="50"
-                                   (select)="onSelect($event)">
-                        <ngx-datatable-column name="Name" prop="name" sortable="true">
-                            <ng-template let-value="value" ngx-datatable-cell-template>
-                                <strong>{{value}}</strong>
-                            </ng-template>
-                        </ngx-datatable-column>
-                        <ngx-datatable-column name="Collection" prop="collection" sortable="true">
-                            <ng-template let-value="value" ngx-datatable-cell-template>
-                                <strong>{{value}}</strong>
-                            </ng-template>
-                        </ngx-datatable-column>
-                    </ngx-datatable>
-                </div>
-            </div>
-        </div>
-        <div class="col2" [ngClass]="{
-            'col-lg-8': openPanel,
-            'hidden': !openPanel }">
+                <!-- Name Column -->
+                <ng-container matColumnDef="collection" [sticky]="true">
+                    <th mat-header-cell *matHeaderCellDef> Collection </th>
+                    <td mat-cell *matCellDef="let element"> {{element.collection}} </td>
+                </ng-container>
 
-            <div class="card" *ngIf="config">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">{{ 'Record' | translate }}</h4>
-                </div>
-                <div class="card-body">
-                    <div class="container">
-                        <div class="col-sm-12">
-                            <label for="name">{{ 'Name' | translate }}:</label>
-                            <input type="text" class="form-control" placeholder="name" id="name" [(ngModel)]="config.name">
-                        </div>
-                        <div class="col-sm-12">
-                            <label for="collection">{{ 'Collection' | translate }}:</label>
-                            <input type="text" class="form-control" placeholder="collection" id="collection"
-                                   [(ngModel)]="config.collection">
-                        </div>
-                        <div class="col-sm-12">
-                            <label for="data">{{ 'Data' | translate }}:</label>
-                            <ace-editor id="data"
-                                    [(text)]="code"
-                                    [options]="options" style="height:250px;"></ace-editor>
-                        </div>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                    [ngClass]="{'selected': selected.id == row.id}"
+                    (click)="highlight(row)"
+                ></tr>
+            </table>
+        </div>
+        <div class="col-lg-7 col-sm-12">
+            <mat-progress-bar mode="indeterminate" *ngIf="!selected"></mat-progress-bar>
+            <mat-card class="example-card" *ngIf="selected">
+                <mat-card-header>
+                    <mat-card-title>{{ 'Configuration descriptor' | translate }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <input matInput placeholder="Name" [(ngModel)]="selected.name">
+                        </mat-form-field>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <div class="col-sm-12">
-                        <a class="btn btn-raised btn-primary mr-1" (click)="save()">{{ 'Save' | translate }}</a>
-                        <a class="btn btn-raised btn-primary mr-1" (click)="delete()">{{ 'Delete' | translate }}</a>
-                        <a class="btn btn-raised btn-primary mr-1" (click)="cancel()">{{ 'Cancel' | translate }}</a>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <input matInput placeholder="Collection" [(ngModel)]="selected.collection">
+                        </mat-form-field>
                     </div>
-                </div>
-            </div>
+                    <div class="col-12">
+                        <ace-editor
+                                [(text)]="code"
+                                [options]="options"
+                                style="height:300px;"></ace-editor>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="save()">{{ 'Save' | translate }}</button>
+                    <button mat-raised-button>{{ 'Reset' | translate }}</button>
+                    <button mat-raised-button (click)="delete()">{{ 'Delete' | translate }}</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
-</section>
+</app-fafa-container>
+

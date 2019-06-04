@@ -1,6 +1,36 @@
+@import '~@angular/material/theming';
+
 // @import "sass/bootstrap/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap-reboot";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 // @import "../../node_modules/bootstrap/scss/bootstrap-grid";
-
 @import "footballapp";
+
+$config: mat-typography-config();
+
+.mat-toolbar {
+  border-radius: 20px 20px 0 0;
+  box-shadow: 3px -0.1em 5px rgba(0,0,0,0.16), 3px -0.1em 5px rgba(0,0,0,0.20);
+  padding: 0 20px 0 20px;
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+  //.toolbar-icon {
+  //  padding: 0 18px;
+  //}
+}
+
+.mat-form-field-label {
+  font-size: mat-font-size($config, body-1);
+  font-family: mat-font-family($config);
+}
+
+// SideNav
+//.sidenav-wrapper {
+//  mat-sidenav {
+//    width: 60px;
+//  }
+//  mat-sidenav:hover {
+//    width: 250px;
+//  }
+//}

@@ -1,24 +1,19 @@
-.hidden {
-  display: none;
-}
+@import '~@angular/material/theming';
+@import "~src/assets/footballapp";
 
-datatable-body-row {
-  .active {
-    background-color: #008AAD;
-    .datatable-row-group {
-      background-color: #008AAD;
-    }
-    datatable-body-cell {
-      color: #ffffff;
-      font-weight: bold;
-      .datatable-body-cell-label {
-        color: #ffffff;
-        font-weight: bold;
-        strong {
-          color: #ffffff;
-          font-weight: bold;
-        }
-      }
-    }
+$app-primary: mat-palette($accent);
+$color-primary: mat-color($app-primary);
+
+.table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 50%;
+}
+table {
+  .selected {
+    background-color: $color-primary;
   }
 }
+

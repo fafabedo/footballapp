@@ -11,10 +11,9 @@ import {ConfigService} from '../service/config.service';
 export class ConfigDashboardComponent implements OnInit {
   configs: Array<Config> = [];
   data: Array<Config> = [];
-  selected: any[] = [];
-  config: Config;
-  openPanel = false;
-  options = {maxLines: 10000, printMargin: false};
+  selected: Config = {id: '0'};
+  options = {maxLines: 1000, printMargin: false};
+  displayedColumns: string[] = ['name', 'collection'];
 
   constructor(private configService: ConfigService) {}
 
@@ -25,82 +24,68 @@ export class ConfigDashboardComponent implements OnInit {
   getConfigs() {
     this.configService.getConfigs()
       .subscribe(configs => {
-        this.configs = configs;
+        this.selected = configs[0];
         this.data = configs;
       });
   }
 
-  updateFilter(event) {
-    const val = event.target.value.toLowerCase();
+  applyFilter(event) {
+    const val = event.toLowerCase();
     this.data = this.configs.filter(config => (config.name.toLowerCase().indexOf(val) !== -1
       || config.collection.toLowerCase().indexOf(val) !== -1 || !val));
   }
 
-  onSelect(event) {
-    if (this.selected[0] && this.config && this.selected[0].id === this.config.id) {
-      this.selected[0] = [];
-      this.openPanel = false;
-    } else {
-      this.config = {
-        id: this.selected[0].id,
-        name: this.selected[0].name,
-        collection: this.selected[0].collection,
-        data: this.selected[0].data
-      };
-      this.openPanel = true;
-    }
-  }
-
   get code() {
     // return this.text;
-    return JSON.stringify(this.config.data, null, 2);
+    return JSON.stringify(this.selected.data, null, 2);
   }
 
   set code(v) {
     try {
-      this.config.data = JSON.parse(v);
+      this.selected.data = JSON.parse(v);
     } catch (e) {
+      console.log(e.toString());
       console.log('error occored while you were typing the JSON');
     }
   }
 
+  highlight(row: any) {
+    this.selected = row;
+  }
+
   new() {
-    this.config = {
+    this.selected = {
       id: '0',
       name: '',
       collection: '',
       data: {}
     };
-    this.openPanel = true;
   }
 
   save() {
-    if (this.config.id === '0') {
+    if (this.selected.id === '0') {
       this.configService
-        .post(this.config)
+        .post(this.selected)
         .subscribe(config => {
           this.getConfigs();
-          this.openPanel = false;
         });
     } else {
       this.configService
-        .put(this.config)
+        .put(this.selected)
         .subscribe(config => {
           this.getConfigs();
-          this.openPanel = false;
         });
     }
   }
 
   delete() {
-    this.configService.delete(this.config)
+    this.configService.delete(this.selected)
       .subscribe(temp => {
         this.getConfigs();
-        this.openPanel = false;
       });
   }
 
   cancel() {
-    this.openPanel = false;
+
   }
 }

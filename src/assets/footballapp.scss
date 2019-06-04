@@ -1,39 +1,98 @@
 @import '../../node_modules/@angular/material/theming';
-@include mat-core();
 
-$fb-primary: (
-  50: #E7E9F3,
-  100: #C2C7E3,
-  200: #9AA3CF,
-  300: #7380BC,
-  400: #5665AF,
-  500: #374BA2,
-  600: #324398,
-  700: #293A8D,
-  800: #213081,
-  900: #131F6B
+$custom-typography: mat-typography-config(
+  $font-family: 'Poppins',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $title: mat-typography-level(28px, 48px, 700)
+);
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto',
+  $caption: mat-typography-level(16px, 20px, 500),
+  $body-1: mat-typography-level(16px, 24px, 400),
+  $display-1: mat-typography-level(14px, 22px, 400),
+  $display-2: mat-typography-level(12px, 20px, 400)
 );
 
-$fb-accent: (
-  50: #E1F4FD,
-  100: #B3E5F9,
-  200: #81D5F4,
-  300: #50C4EB,
-  400: #2DB8E4,
-  500: #1CADDB,
-  600: #149EC8,
-  700: #008AAD,
-  800: #007794,
-  900: #005567
+@include mat-base-typography($custom-typography);
+@include mat-checkbox-typography($custom-typography);
+@include angular-material-typography($custom-typography);
+
+@include mat-core($custom-typography);
+
+$primary: (
+  50 : #e3e4ed,
+  100 : #b8bcd3,
+  200 : #898fb5,
+  300 : #5a6297,
+  400 : #364181,
+  500 : #131f6b,
+  600 : #111b63,
+  700 : #0e1758,
+  800 : #0b124e,
+  900 : #060a3c,
+  A100 : #7379ff,
+  A200 : #4048ff,
+  A400 : #0d17ff,
+  A700 : #000af2,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
 );
 
-$footballapp-primary: mat-palette($fb-primary);
-$footballapp-accent: mat-palette($mat-pink, A200, A100, A400);
+$accent: (
+  50 : #e4f5fb,
+  100 : #bbe6f4,
+  200 : #8ed6ed,
+  300 : #60c6e6,
+  400 : #3eb9e0,
+  500 : #1caddb,
+  600 : #19a6d7,
+  700 : #149cd2,
+  800 : #1193cd,
+  900 : #0983c4,
+  A100 : #eff9ff,
+  A200 : #bce5ff,
+  A400 : #89d2ff,
+  A700 : #6fc8ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$footballapp-primary: mat-palette($primary);
+$footballapp-accent: mat-palette($accent, A200, A100, A400);
 
 $footballapp-warn: mat-palette($mat-red);
 
 $footballapp-theme: mat-light-theme($footballapp-primary, $footballapp-accent, $footballapp-warn);
 
 @include angular-material-theme($footballapp-theme);
+
 
 

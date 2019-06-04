@@ -12,7 +12,7 @@ export class ConfigService {
 
   getConfigs(): Observable<Config[]> {
     const url = this.apiPlatform.getApiPlatformResource('configs');
-    const params = {'pagination': 'false', 'order[name]': 'ASC'};
+    const params = {pagination: 'false', 'order[name]': 'ASC'};
     return this.http.get<Config[]>(url, {params: params})
       .catch(err => this.handleError(err));
   }
@@ -24,6 +24,7 @@ export class ConfigService {
   }
 
   post(config: Config): Observable<Config> {
+    console.log(config);
     config.id = null;
     const url = this.apiPlatform.getApiPlatformResource('configs');
     return this.http.post<Config[]>(url, config)

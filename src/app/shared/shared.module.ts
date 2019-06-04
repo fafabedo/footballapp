@@ -18,6 +18,26 @@ import {ToggleFullscreenDirective} from './directives/toggle-fullscreen.directiv
 import {ChunkPipe} from './pipes/chunk/chunk.pipe';
 import {ImageSrcPipe} from './pipes/imagesrc/imagesrc.pipe';
 import {MaterialModule} from './material/material.module';
+import {FafaContainerComponent} from './components/container/fafa-container.component';
+
+
+const PIPES = [
+  FlotDirective,
+  SparklineDirective,
+  EasypiechartDirective,
+  CheckallDirective,
+  VectormapDirective,
+  NowDirective,
+  ScrollableDirective,
+  JqcloudDirective,
+  ToggleFullscreenDirective,
+  ChunkPipe,
+  ImageSrcPipe,
+];
+
+const COMPONENTS = [
+  FafaContainerComponent
+];
 
 @NgModule({
   imports: [
@@ -32,17 +52,8 @@ import {MaterialModule} from './material/material.module';
     ColorsService
   ],
   declarations: [
-    FlotDirective,
-    SparklineDirective,
-    EasypiechartDirective,
-    CheckallDirective,
-    VectormapDirective,
-    NowDirective,
-    ScrollableDirective,
-    JqcloudDirective,
-    ToggleFullscreenDirective,
-    ChunkPipe,
-    ImageSrcPipe,
+    PIPES,
+    ...COMPONENTS,
   ],
   exports: [
     CommonModule,
@@ -52,17 +63,8 @@ import {MaterialModule} from './material/material.module';
     RouterModule,
     NgbModule,
     MaterialModule,
-    FlotDirective,
-    SparklineDirective,
-    EasypiechartDirective,
-    CheckallDirective,
-    VectormapDirective,
-    NowDirective,
-    ScrollableDirective,
-    JqcloudDirective,
-    ToggleFullscreenDirective,
-    ChunkPipe,
-    ImageSrcPipe,
+    ...PIPES,
+    ...COMPONENTS,
   ]
 })
 

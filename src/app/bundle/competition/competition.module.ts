@@ -9,44 +9,45 @@ import {CompetitionMainComponent} from './competition-main/competition-main.comp
 import {CompetitionMatchesComponent} from './competition-matches/competition-matches.component';
 import {CompetitionHomeComponent} from './competition-home/competition-home.component';
 import {CompetitionTableComponent} from './competition-table/competition-table.component';
-import {TableModule} from '../table/table.module';
+import {CompetitionSettingsComponent} from './competition-settings/competition-settings.component';
 import {CompetitionSeasonService} from './service/competition-season.service';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 const routes: Routes = [
-    {
-        path: ':id',
-        children: [
-            {path: 'home', component: CompetitionHomeComponent},
-            {path: 'table', component: CompetitionTableComponent},
-            {path: 'matches', component: CompetitionMatchesComponent},
-        ]
-    }
+  {
+    path: ':id',
+    children: [
+      {path: 'home', component: CompetitionHomeComponent},
+      {path: 'table', component: CompetitionTableComponent},
+      {path: 'matches', component: CompetitionMatchesComponent},
+      {path: 'settings', component: CompetitionSettingsComponent},
+    ]
+  }
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        SharedModule,
-        TableModule,
-        RouterModule.forChild(routes),
-        NgxDatatableModule,
-    ],
-    declarations: [
-        CompetitionMainComponent,
-        CompetitionHomeComponent,
-        CompetitionMatchesComponent,
-        CompetitionTableComponent,
-    ],
-    providers: [
-        CountryService,
-        TeamService,
-        CompetitionService,
-        CompetitionSeasonService,
-    ],
-    exports: [
-        RouterModule,
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    NgxDatatableModule,
+  ],
+  declarations: [
+    CompetitionMainComponent,
+    CompetitionHomeComponent,
+    CompetitionMatchesComponent,
+    CompetitionTableComponent,
+    CompetitionSettingsComponent,
+  ],
+  providers: [
+    CountryService,
+    TeamService,
+    CompetitionService,
+    CompetitionSeasonService,
+  ],
+  exports: [
+    RouterModule,
+  ]
 })
 export class CompetitionModule {
 }

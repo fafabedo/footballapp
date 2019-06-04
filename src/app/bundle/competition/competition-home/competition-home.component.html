@@ -1,4 +1,22 @@
-<div>
-    Competition homepage
-
-</div>
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>{{ 'Competition' | translate }}</span>
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button class="toolbar-icon" aria-label="Add">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button class="toolbar-icon" aria-label="Settings">
+            <mat-icon>settings</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<app-fafa-container>
+    <mat-card *ngFor="let competition_team of competitionSeasonTeams">
+        <mat-card-header>
+            {{ competition_team.team.id }}
+        </mat-card-header>
+        <mat-card-content>
+            {{ competition_team.team.name }}
+        </mat-card-content>
+    </mat-card>
+</app-fafa-container>

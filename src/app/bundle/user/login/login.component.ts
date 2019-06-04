@@ -14,7 +14,7 @@ import {UserService} from '../service/user.service';
 export class LoginComponent implements OnInit {
 
     valForm: FormGroup;
-    @ViewChild('f') loginForm: NgForm;
+    @ViewChild('f', {static: false}) loginForm: NgForm;
 
     constructor(public settings: SettingsService, fb: FormBuilder, private router: Router,
                 private userService: UserService,

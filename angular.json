@@ -35,6 +35,7 @@
               "src/assets/css/hopscotch.css",
               "src/assets/css/demo.css",
               "src/assets/sass/app.scss",
+              "src/assets/app.scss",
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               "node_modules/@swimlane/ngx-datatable/release/index.css",
               "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -45,6 +46,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/hammerjs/hammer.min.js",
               "src/assets/vendor/pace/pace.min.js",
               "src/assets/js/perfect-scrollbar.jquery.min.js"
             ],

@@ -1,22 +1,40 @@
-<div class="wrapper" [class.nav-collapsed]="isCollapsed">
-    <div class="app-sidebar"
-         data-active-color="white"
-         data-background-color="blue"
-         data-image="assets/img/sidebar-bg/fifa_world_cup_org.png">
-        <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>
-        <div class="sidebar-background"></div>
-    </div>
-    <app-navbar></app-navbar>
-    <div class="main-panel">
-        <div class="main-content">
-            <div class="content-wrapper">
-                <div class="container-fluid">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
-        </div>
+<mat-sidenav-container class="sidenav-wrapper">
+    <mat-sidenav #sidenav mode="side"
+                 (mouseenter)="toggle(false)"
+                 (mouseleave)="toggle(true)"
+                 [(opened)]="opened"
+                 [@navToggle]="toggled ? 'toggleIn' : 'toggleOut'">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-navbar></app-navbar>
+
+<!--                <button mat-raised-button (click)="sidenav.toggle()">Toggle</button>-->
+        <router-outlet></router-outlet>
+
         <app-footer></app-footer>
-    </div>
-    <app-notification-sidebar></app-notification-sidebar>
-    <!--<app-customizer></app-customizer>-->
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--<div class="wrapper" [class.nav-collapsed]="isCollapsed">-->
+<!--    <div class="app-sidebar"-->
+<!--         data-active-color="white"-->
+<!--         data-background-color="blue"-->
+<!--         data-image="assets/img/sidebar-bg/fifa_world_cup_org.png">-->
+<!--        <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>-->
+<!--        <div class="sidebar-background"></div>-->
+<!--    </div>-->
+<!--    <app-navbar></app-navbar>-->
+<!--    <div class="main-panel">-->
+<!--        <div class="main-content">-->
+<!--            <div class="content-wrapper">-->
+<!--                <div class="container-fluid">-->
+<!--                    <router-outlet></router-outlet>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <app-footer></app-footer>-->
+<!--    </div>-->
+<!--    <app-notification-sidebar></app-notification-sidebar>-->
+<!--    &lt;!&ndash;<app-customizer></app-customizer>&ndash;&gt;-->
+<!--</div>-->

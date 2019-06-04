@@ -1,14 +1,33 @@
 import {NgModule} from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule, MatCheckboxModule, MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule, MatInputModule,
+  MatMenuModule,
+  MatPaginatorModule, MatProgressBarModule, MatRippleModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSortModule,
+  MatTableModule, MatTabsModule, MatToolbarModule
+} from '@angular/material';
 
 const MODULES = [
-  BrowserAnimationsModule,
   MatGridListModule,
   MatCardModule,
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatTabsModule,
+  MatSortModule,
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule,
+  MatProgressBarModule,
+  MatSidenavModule,
+  MatCheckboxModule,
+  MatSlideToggleModule,
+  MatSliderModule,
 ];
 @NgModule({
   imports: [
