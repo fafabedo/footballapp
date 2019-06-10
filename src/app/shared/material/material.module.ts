@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatFormFieldModule,
+  MatCardModule, MatCheckboxModule, MatChipsModule, MatDividerModule, MatFormFieldModule,
   MatGridListModule,
-  MatIconModule, MatInputModule,
+  MatIconModule, MatInputModule, MatListModule,
   MatMenuModule,
   MatPaginatorModule, MatProgressBarModule, MatRippleModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSortModule,
   MatTableModule, MatTabsModule, MatToolbarModule
@@ -28,6 +28,9 @@ const MODULES = [
   MatCheckboxModule,
   MatSlideToggleModule,
   MatSliderModule,
+  MatChipsModule,
+  MatDividerModule,
+  MatListModule,
 ];
 @NgModule({
   imports: [

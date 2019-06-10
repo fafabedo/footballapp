@@ -1,40 +1,33 @@
-<section id="header" class="country-list-header">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="card-title">{{ 'Countries' | translate }}</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<ngb-tabset #t="ngbTabset">
-    <ngb-tab title="{{ 'All' | translate }}" id="foo">
-        <ng-template ngbTabContent>
-            <div class="row" *ngIf="countries">
-                <div class="col-sm-12">
-                    <div class="card-deck" *ngFor="let row of countries | chunk: 4">
-                        <app-country-card *ngFor="let country of row" [country]="country"
-                                          class="card"></app-country-card>
+<fafa-container>
+    <fafa-container-header>
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip>Homepage</mat-chip>/
+            <mat-chip color="primary" selected>Countries</mat-chip>
+        </mat-chip-list>
+    </fafa-container-header>
+    <fafa-container-content>
+        <mat-tab-group>
+            <mat-tab label="{{ 'All' | translate }}">
+                <div class="row" *ngIf="countries">
+                    <div class="col-sm-12">
+                        <div class="card-deck" *ngFor="let row of countries | chunk: 4">
+                            <app-country-card *ngFor="let country of row" [country]="country"
+                                              class="card"></app-country-card>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </ng-template>
-    </ngb-tab>
-    <ngb-tab *ngFor="let item of table" title="{{ item.federation }}" >
-        <ng-template ngbTabContent>
-            <div class="row" *ngIf="item.countries">
-                <div class="col-sm-12">
-                    <div class="card-deck" *ngFor="let row of item.countries | chunk: 4">
-                        <app-country-card *ngFor="let country of row" [country]="country" class="card">
-                        </app-country-card>
+            </mat-tab>
+            <mat-tab *ngFor="let item of table" label="{{ item.federation }}">
+                <div class="row" *ngIf="item.countries">
+                    <div class="col-sm-12">
+                        <div class="card-deck" *ngFor="let row of item.countries | chunk: 4">
+                            <app-country-card *ngFor="let country of row" [country]="country" class="card">
+                            </app-country-card>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </ng-template>
-    </ngb-tab>
-</ngb-tabset>
-<section id="hover-effects" class="country-list">
+            </mat-tab>
+        </mat-tab-group>
+    </fafa-container-content>
+</fafa-container>
 
-</section>

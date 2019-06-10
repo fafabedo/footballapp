@@ -1,4 +1,5 @@
 @import '../../node_modules/@angular/material/theming';
+@import 'scss/breakpoints';
 
 $custom-typography: mat-typography-config(
   $font-family: 'Poppins',
@@ -85,14 +86,64 @@ $accent: (
   )
 );
 
+
 $footballapp-primary: mat-palette($primary);
-$footballapp-accent: mat-palette($accent, A200, A100, A400);
+//$footballapp-accent: mat-palette($accent, A200, A100, A400);
+$footballapp-accent: mat-palette($accent, 500, 300, 900);
 
 $footballapp-warn: mat-palette($mat-red);
 
 $footballapp-theme: mat-light-theme($footballapp-primary, $footballapp-accent, $footballapp-warn);
 
 @include angular-material-theme($footballapp-theme);
+
+$config: mat-typography-config();
+
+$palette-primary: mat-palette($primary);
+$color-primary: mat-color($palette-primary);
+
+$palette-accent: mat-palette($accent);
+$color-accent: mat-color($palette-accent);
+
+$palette-warn: mat-palette($mat-red);
+$color-warn: mat-color($palette-warn);
+
+$foreground: map-get($footballapp-theme, foreground);
+$background: map-get($footballapp-theme, background);
+
+// Remix
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+$mdc-typography-font-family: unquote("Roboto, sans-serif");
+
+/* Shape */
+// The shapes of small, medium, and large components can be themed by overriding the default values. We recommend using our shape customization tool to help you pick your radius values. https://material.io/design/shape/about-shape.html#shape-customization-tool
+
+$mdc-shape-small-component-radius: 8px;
+$mdc-shape-medium-component-radius: 8px;
+$mdc-shape-large-component-radius: 10px;
+
+
+/* Color */
+// To change your theme's color scheme, replace the existing HEX color values with custom HEX color values. Use our color palette generator to help come up with pairings and check your color contrast. https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+
+// Primary colors ($mdc-theme-primary) map to components such as app bars and buttons, while secondary colors ($mdc-theme-secondary) are used as accents on components such as FABs and selection controls.
+$mdc-theme-primary: $color-primary;
+$mdc-theme-secondary: $color-accent;
+
+
+// Theme background ($mdc-theme-background) appears behind scrollable content. Surface color ($mdc-theme-surface) is mapped to the surface of components such as cards, sheets, and menus. Error color ($mdc-theme-error) is used to indicate an error state for components such as text fields provided with inaccurate input.
+$mdc-theme-surface: mat-color($foreground);
+$mdc-theme-background: mat-color($background);
+$mdc-theme-error: $color-warn;
+
+
+// “On-” colors define how text, icons, and strokes are colored in relation to the surface on which they appear. If you are updating these manually, be sure to consider accessible color contrast for the value pairs.
+$mdc-theme-on-primary: #ffffff;
+$mdc-theme-on-secondary: #ffffff;
+$mdc-theme-on-error: #ffffff;
+$mdc-theme-on-surface: #000000;
+
 
 
 

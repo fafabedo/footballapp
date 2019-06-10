@@ -1,19 +1,20 @@
 <div class="row" *ngFor="let chunk of chunkedArr">
-    <div class="{{attributes}} col-12" *ngFor="let federation of chunk">
+    <div class="{{attributes}} col-sm-4" *ngFor="let federation of chunk">
         <a class="link-federation" (click)="navigateFederation(federation)">
-        <div class="card" >
-            <div class="card text-center">
-                <div class="card-body">
-                    <div class="card-block">
+            <div class="mdc-card">
+                <div class="mdc-card__primary-action" tabindex="0">
+                    <div class="mdc-card__media">
                         <figure class="fig-federation">
                             <img src="{{ prepareImageSrc(federation.image) }}" alt="element 02" class="mb-1">
                         </figure>
-                        <h3 class="card-title">{{federation.shortname}}</h3>
-                        <p class="card-text">456 countries</p>
+                    </div>
+                    <div class="card__primary">
+                        <h3 class="mdc-typography mdc-typography--overline">{{federation.shortname}}</h3>
+                    </div>
+                    <div class="mdc-typography mdc-typography--body2">456 countries
                     </div>
                 </div>
             </div>
-        </div>
         </a>
     </div>
 </div>

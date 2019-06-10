@@ -1,6 +1,119 @@
-.user-avatar {
-  margin-right: 10px;
-  .width-50 {
-    width: 38px !important;
+@import "~src/assets/footballapp";
+.navbar {
+  padding: .5rem .5rem;
+  .navbar-header {
+    .mat-icon-button {
+      @media (min-width: $screen-md-min) {
+        //display: none;
+      }
+      @media (max-width: $screen-sm-max) {
+        padding-top:10px;
+      }
+    }
+
+    .mdc-card {
+      margin-bottom: 1px;
+
+      .mdc-card__media {
+        figure {
+          width: 32px;
+          height: 30px;
+
+          img {
+            padding-top: 3px;
+            display: block;
+            width: 100%;
+            max-height: 42px;
+            margin: 0;
+          }
+        }
+      }
+
+      .mdc-card__primary-action {
+        display: inline-flex;
+        flex-direction: row;
+        padding: 0;
+
+        .card__primary {
+          padding: 15px 10px 0 10px;
+
+          .card__title {
+            margin: 0;
+            line-height: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-container {
+    display: inline-flex;
+  }
+
+  // Search toggle
+  .search-toggle {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 50px;
+    border-radius: 25px;
+    padding-top: 7px;
+    padding-left: 15px;
+
+    .search-input {
+      font-size: mat-font-size($config, body-1);
+      border: 0;
+      outline: 0;
+      background: none;
+      caret-color: transparent;
+      line-height: 20px;
+
+      &.filled {
+        width: 300px;
+      }
+
+      &:not(.filled) {
+        width: 0;
+      }
+
+      transition: width 0.3s linear;
+
+      .mat-form-field-wrapper {
+        .mat-form-field-infix {
+          border: 5px;
+        }
+
+        .mat-form-field-underline {
+          background-color: mat-color($palette-primary, default, 0.15);
+        }
+      }
+    }
+
+    &:hover {
+      border: 1px solid rgba(64, 64, 64, 0.1);
+    }
+
+    &:hover > .search-input {
+      padding: 0 10px;
+      width: 300px;
+      caret-color: black;
+      transition: width 0.3s linear;
+    }
+
+    &:hover > .search-icon {
+      //background: white;
+    }
+
+    .search-icon {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      height: 30px;
+      width: 30px;
+      float: right;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
   }
 }
+

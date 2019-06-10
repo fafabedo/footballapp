@@ -18,7 +18,7 @@ import {ToggleFullscreenDirective} from './directives/toggle-fullscreen.directiv
 import {ChunkPipe} from './pipes/chunk/chunk.pipe';
 import {ImageSrcPipe} from './pipes/imagesrc/imagesrc.pipe';
 import {MaterialModule} from './material/material.module';
-import {FafaContainerComponent} from './components/container/fafa-container.component';
+import {FafaContainerModule} from './components/fafa-container/fafa-container.module';
 
 
 const PIPES = [
@@ -36,7 +36,6 @@ const PIPES = [
 ];
 
 const COMPONENTS = [
-  FafaContainerComponent
 ];
 
 @NgModule({
@@ -46,6 +45,7 @@ const COMPONENTS = [
     ReactiveFormsModule,
     TranslateModule,
     NgbModule,
+    FafaContainerModule,
     MaterialModule,
   ],
   providers: [
@@ -63,6 +63,7 @@ const COMPONENTS = [
     RouterModule,
     NgbModule,
     MaterialModule,
+    FafaContainerModule,
     ...PIPES,
     ...COMPONENTS,
   ]

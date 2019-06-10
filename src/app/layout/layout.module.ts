@@ -8,30 +8,32 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {CustomizerComponent} from './customizer/customizer.component';
 import {NotificationSidebarComponent} from './notification-sidebar/notification-sidebar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
-    imports: [
-        SharedModule,
-        NgbModule,
-    ],
-    providers: [],
-    declarations: [
-        LayoutComponent,
-        FooterComponent,
-        SidebarComponent,
-        NavbarComponent,
-        CustomizerComponent,
-        NotificationSidebarComponent,
-    ],
-    exports: [
-        LayoutComponent,
-        FooterComponent,
-        SidebarComponent,
-        NavbarComponent,
-        CustomizerComponent,
-        NotificationSidebarComponent,
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    NgbModule,
+  ],
+  providers: [],
+  declarations: [
+    LayoutComponent,
+    FooterComponent,
+    SidebarComponent,
+    NavbarComponent,
+    CustomizerComponent,
+    NotificationSidebarComponent,
+  ],
+  exports: [
+    LayoutComponent,
+    FooterComponent,
+    SidebarComponent,
+    NavbarComponent,
+    CustomizerComponent,
+    NotificationSidebarComponent,
+  ]
 })
 export class LayoutModule {
 }

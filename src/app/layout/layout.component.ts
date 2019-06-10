@@ -1,47 +1,46 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {ThemesService} from '../core/themes/themes.service';
 import {SettingsService} from '../core/settings/settings.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-layout',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
-  animations: [
-    trigger('navToggle', [
-      state('toggleIn', style({
-          width: '60px'
-      })),
-      state('toggleOut', style({
-        width: '220px'
-      })),
-      transition('toggleIn => toggleOut', [
-        animate('0.2s')
-      ]),
-      transition('toggleOut => toggleIn', [
-        animate('0.4s')
-      ])
-    ])
-  ]
+  styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
   isCollapsed = false;
-  opened = true;
-  toggled = true;
+  collapsed = true;
+  collapsible = true;
+  drawerOpened = true;
+  screenWidth: any;
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.screenWidth = window.innerWidth;
+    console.log(this.screenWidth);
+  }
 
   constructor(private settingsService: SettingsService,
               private themeService: ThemesService) {
+    this.getScreenSize();
   }
 
   ngOnInit() {
     this.isCollapsed = this.settingsService.layout.isCollapsed;
     this.themeService.setTheme(this.settingsService.layout.theme);
+    this.drawerOpened = this.opened();
+  }
+
+
+
+  opened(): boolean {
+    return this.screenWidth >= 720;
   }
 
   toggle(value) {
-    if (this.toggled !== value) {
-      this.toggled = value;
+    if (this.collapsed !== value) {
+      this.collapsed = value;
     }
   }
 

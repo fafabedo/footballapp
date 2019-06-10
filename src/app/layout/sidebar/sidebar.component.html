@@ -1,23 +1,12 @@
 <!-- Sidebar Header starts -->
 <div class="sidebar-header">
-    <div class="logo clearfix">
-        <a [routerLink]="['/']" class="logo-text float-left">
+    <div class="logo">
+        <a [routerLink]="['/']" class="logo-link">
             <div class="logo-img">
                 <!--<img src="assets/img/logo.png" />-->
                 <img src="assets/img/football-logo.png" />
             </div>
-            <span class="text align-middle">Football</span>
-        </a>
-        <mat-slide-toggle class="nav-toggle d-none d-sm-none d-md-none d-lg-block"
-                [color]="'accent'"
-                [checked]="isCollapsed">
-        </mat-slide-toggle>
-<!--        <a class="nav-toggle d-none d-sm-none d-md-none d-lg-block" id="sidebarToggle" href="javascript:;">-->
-<!--            <i *ngIf="!isCollapsed" class="ft-toggle-left toggle-icon" data-toggle="collapsed"></i>-->
-<!--            <i *ngIf="isCollapsed" class="ft-toggle-right toggle-icon" data-toggle="expanded"></i>-->
-<!--        </a>-->
-        <a class="nav-close d-block d-md-block d-lg-none d-xl-none" id="sidebarClose" href="javascript:;">
-            <i class="ft-x"></i>
+            <span class="logo-text">Football</span>
         </a>
     </div>
 </div>
@@ -31,13 +20,14 @@
              <li *ngFor="let menuItem of menuItems" [ngClass]="[menuItem.class]" [routerLinkActive]="menuItem.submenu.length != 0 ? '' : 'active'"
                 [routerLinkActiveOptions]="{exact: true}">
                 <a [routerLink]="menuItem.class === '' ? [menuItem.path] : null" *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
-                    <i [ngClass]="[menuItem.icon]"></i>
+                    <mat-icon>{{menuItem.icon}}</mat-icon>
+<!--                    <i [ngClass]="[menuItem.icon]"></i>-->
                     <span class="menu-title">{{menuItem.title | translate }}</span>
                     <span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span>
                 </a>
                 <ng-template #externalLinkBlock>
                     <a [href]="[menuItem.path]" target="_blank">
-                        <i [ngClass]="[menuItem.icon]"></i>
+                        <mat-icon>{{menuItem.icon}}</mat-icon>
                         <span class="menu-title">{{menuItem.title | translate }}</span>
                         <span *ngIf="menuItem.badge != '' " [ngClass]="[menuItem.badgeClass]">{{menuItem.badge}}</span>
                     </a>
@@ -82,3 +72,11 @@
     </div>
 </div>
 <!-- Sidebar Content Ends -->
+
+<div class="sidebar-footer" [ngClass]="{'collapsed' : isCollapsed, 'opened': !isCollapsed}">
+    <mat-slide-toggle
+            class="example-margin">
+        {{ 'Collapsible' | translate }}
+    </mat-slide-toggle>
+</div>
+

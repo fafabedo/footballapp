@@ -3,6 +3,7 @@
   "rulesDirectory": [
     "codelyzer"
   ],
+  "component-selector":  [false],
   "object-literal-shorthand": false,
   "rules": {
     "array-type": false,
