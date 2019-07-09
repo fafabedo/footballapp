@@ -1,0 +1,64 @@
+@import '~node_modules/@angular/material/theming';
+
+@import "footballapp";
+
+@import "@material/button/mdc-button";
+@import "@material/card/mdc-card";
+@import "@material/checkbox/mdc-checkbox";
+@import "@material/chips/mdc-chips";
+//@import "@material/dialog/mdc-dialog";
+@import "@material/drawer/mdc-drawer";
+@import "@material/elevation/mdc-elevation";
+//@import "@material/fab/mdc-fab";
+@import "@material/form-field/mdc-form-field";
+@import "@material/icon-button/mdc-icon-button";
+//@import "@material/image-list/mdc-image-list";
+@import "@material/linear-progress/mdc-linear-progress";
+@import "@material/list/mdc-list";
+@import "@material/menu/mdc-menu";
+//@import "@material/menu-surface/mdc-menu-surface";
+//@import "@material/radio/mdc-radio";
+@import "@material/ripple/mixins";
+@import "@material/rtl/mixins";
+//@import "@material/select/mdc-select";
+//@import "@material/shape/mixins";
+//@import "@material/shape/functions";
+//@import "@material/slider/mdc-slider";
+//@import "@material/snackbar/mdc-snackbar";
+//@import "@material/switch/mdc-switch";
+@import "@material/tab-bar/mdc-tab-bar";
+@import "@material/tab-scroller/mdc-tab-scroller";
+@import "@material/tab-indicator/mdc-tab-indicator";
+@import "@material/tab/mdc-tab";
+@import "@material/textfield/mdc-text-field";
+@import "@material/textfield/helper-text/mdc-text-field-helper-text";
+//@import "@material/theme/color-palette";
+//@import "@material/theme/functions";
+//@import "@material/theme/mixins";
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "@material/typography/mdc-typography";
+
+@import "scss/base";
+
+// FafaContainer
+//fafa-container {
+//  .mat-toolbar {
+//    border-radius: 15px 15px 0 0;
+//    box-shadow: 3px -0.1em 5px rgba(0, 0, 0, 0.16), 3px -0.1em 5px rgba(0, 0, 0, 0.20);
+//    padding: 0 20px 0 20px;
+//
+//    .toolbar-spacer {
+//      flex: 1 1 auto;
+//    }
+//  }
+//  .fafa-container-content {
+//    //padding: 12px 12px 20px 12px;
+//    border-radius: 0 0 10px 10px;
+//    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.14), 3px 3px 6px rgba(0, 0, 0, 0.18);
+//  }
+//}
+
+//.mat-form-field-label {
+//  font-size: mat-font-size($config, body-1);
+//  font-family: mat-font-family($config);
+//}

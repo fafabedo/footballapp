@@ -1,0 +1,58 @@
+mat-sidenav-content {
+  .main-content {
+    padding: 0 5px 0 5px;
+  }
+}
+
+.row {
+  left: -5px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-right: 1px;
+  margin-left: 1px;
+}
+
+.col-sm-3, .col-sm-4 {
+  padding: 0 5px 0 5px !important;
+}
+
+.mdc-card {
+  margin-bottom: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  border-left: 1px solid rgba(0, 0, 0, 0.10);
+  box-shadow: 1px 2px 1px -1px rgba(0, 0, 0, 0.17), 1px 2px 1px 0px rgba(0, 0, 0, 0.14), 1px 2px 3px 0px rgba(0, 0, 0, 0.12);
+
+  .mdc-card__primary-action {
+    padding: 15px 0 15px 0;
+  }
+}
+
+button {
+  &:hover {
+    animation: pop-ripple 250ms ease-out forwards;
+  }
+  &:not(hover) {
+    animation: pop-fade 300ms ease-in-out forwards;
+  }
+}
+
+.mat-menu-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@keyframes pop-ripple {
+  @for $i from 0 through 100 {
+    #{$i + 0%} { background-image: radial-gradient(circle at center, #C3C3C3 ($i + 0%), #fafafa ($i + 0%)); }
+  }
+}
+
+@keyframes pop-fade {
+  @for $i from 0 through 100 {
+    #{$i + 0%} {
+      background-image:
+        radial-gradient(circle at center, rgba(#c3c3c3, ((100 - $i) / 100)) 0% 100%),
+        radial-gradient(circle at center, #fafafa 0% 100%);
+    }
+  }
+}

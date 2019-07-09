@@ -1,0 +1,149 @@
+@import '../../node_modules/@angular/material/theming';
+@import 'scss/breakpoints';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Poppins',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $title: mat-typography-level(28px, 48px, 700)
+);
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto',
+  $caption: mat-typography-level(16px, 20px, 500),
+  $body-1: mat-typography-level(16px, 24px, 400),
+  $display-1: mat-typography-level(14px, 22px, 400),
+  $display-2: mat-typography-level(12px, 20px, 400)
+);
+
+@include mat-base-typography($custom-typography);
+@include mat-checkbox-typography($custom-typography);
+@include angular-material-typography($custom-typography);
+
+@include mat-core($custom-typography);
+
+$primary: (
+  50 : #e3e4ed,
+  100 : #b8bcd3,
+  200 : #898fb5,
+  300 : #5a6297,
+  400 : #364181,
+  500 : #131f6b,
+  600 : #111b63,
+  700 : #0e1758,
+  800 : #0b124e,
+  900 : #060a3c,
+  A100 : #7379ff,
+  A200 : #4048ff,
+  A400 : #0d17ff,
+  A700 : #000af2,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$accent: (
+  50 : #e4f5fb,
+  100 : #bbe6f4,
+  200 : #8ed6ed,
+  300 : #60c6e6,
+  400 : #3eb9e0,
+  500 : #1caddb,
+  600 : #19a6d7,
+  700 : #149cd2,
+  800 : #1193cd,
+  900 : #0983c4,
+  A100 : #eff9ff,
+  A200 : #bce5ff,
+  A400 : #89d2ff,
+  A700 : #6fc8ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+$footballapp-primary: mat-palette($primary);
+//$footballapp-accent: mat-palette($accent, A200, A100, A400);
+$footballapp-accent: mat-palette($accent, 500, 300, 900);
+
+$footballapp-warn: mat-palette($mat-red);
+
+$footballapp-theme: mat-light-theme($footballapp-primary, $footballapp-accent, $footballapp-warn);
+
+@include angular-material-theme($footballapp-theme);
+
+$config: mat-typography-config();
+
+$palette-primary: mat-palette($primary);
+$color-primary: mat-color($palette-primary);
+
+$palette-accent: mat-palette($accent);
+$color-accent: mat-color($palette-accent);
+
+$palette-warn: mat-palette($mat-red);
+$color-warn: mat-color($palette-warn);
+
+$foreground: map-get($footballapp-theme, foreground);
+$background: map-get($footballapp-theme, background);
+
+// Remix
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+$mdc-typography-font-family: unquote("Roboto, sans-serif");
+
+/* Shape */
+// The shapes of small, medium, and large components can be themed by overriding the default values. We recommend using our shape customization tool to help you pick your radius values. https://material.io/design/shape/about-shape.html#shape-customization-tool
+
+$mdc-shape-small-component-radius: 8px;
+$mdc-shape-medium-component-radius: 8px;
+$mdc-shape-large-component-radius: 10px;
+
+
+/* Color */
+// To change your theme's color scheme, replace the existing HEX color values with custom HEX color values. Use our color palette generator to help come up with pairings and check your color contrast. https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+
+// Primary colors ($mdc-theme-primary) map to components such as app bars and buttons, while secondary colors ($mdc-theme-secondary) are used as accents on components such as FABs and selection controls.
+$mdc-theme-primary: $color-primary;
+$mdc-theme-secondary: $color-accent;
+
+
+// Theme background ($mdc-theme-background) appears behind scrollable content. Surface color ($mdc-theme-surface) is mapped to the surface of components such as cards, sheets, and menus. Error color ($mdc-theme-error) is used to indicate an error state for components such as text fields provided with inaccurate input.
+$mdc-theme-surface: mat-color($foreground);
+$mdc-theme-background: mat-color($background);
+$mdc-theme-error: $color-warn;
+
+
+// “On-” colors define how text, icons, and strokes are colored in relation to the surface on which they appear. If you are updating these manually, be sure to consider accessible color contrast for the value pairs.
+$mdc-theme-on-primary: #ffffff;
+$mdc-theme-on-secondary: #ffffff;
+$mdc-theme-on-error: #ffffff;
+$mdc-theme-on-surface: #000000;
+
+
+
+
