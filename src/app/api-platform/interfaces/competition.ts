@@ -21,4 +21,5 @@ export interface Competition {
   isYouthCompetition?: boolean;
   metadata?: any;
   tmkCode?: string;
+  isFeatured?: boolean;
 }

@@ -1,59 +1,62 @@
 <!-- Navbar (Header) Starts -->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-    <header class="container-fluid">
-        <div class="navbar-header">
-            <button mat-icon-button class="float-left" (click)="toggle($event)">
-                <mat-icon>menu</mat-icon>
-                <span class="sr-only">{{ 'Toggle navigation' | translate }}</span>
+  <header class="container-fluid">
+    <div class="navbar-header">
+      <button mat-icon-button class="float-left" (click)="toggle($event)">
+        <mat-icon>menu</mat-icon>
+        <span class="sr-only">{{ 'Toggle navigation' | translate }}</span>
+      </button>
+      <ng-container *ngIf="getCompetition()">
+        <div class="mdc-card">
+          <div class="mdc-card__primary-action" tabindex="0">
+            <div class="mdc-card__media">
+              <figure>
+                <img alt="Card image cap" class="card-img-top img-fluid"
+                     src="{{ getCompetition().image | imageSrc }}"/>
+              </figure>
+            </div>
+            <div class="card__primary">
+              <h2 class="card__title mdc-typography mdc-typography--subtitle1">{{ getCompetition().name }}</h2>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="navbar-container">
+      <div class="nav-item">
+        <div class="search-toggle">
+          <mat-form-field class="search-input" floatLabel="never" [ngClass]="{'filled': searchString.length > 0}">
+            <input matInput type="text" placeholder="Search..." [(ngModel)]="searchString">
+            <button mat-button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="searchString=''">
+              <mat-icon>close</mat-icon>
             </button>
-            <div class="mdc-card">
-                <div class="mdc-card__primary-action" tabindex="0">
-                    <div class="mdc-card__media">
-                        <figure >
-                            <img alt="Card image cap" class="card-img-top img-fluid"
-                                src="http://apifootball.local/files//competition/IT1.png" />
-                        </figure>
-                    </div>
-                    <div class="card__primary">
-                        <h2 class="card__title mdc-typography mdc-typography--subtitle1">Serie A</h2>
-                    </div>
-                </div>
-            </div>
+          </mat-form-field>
+          <mat-icon class="search-icon">search</mat-icon>
         </div>
-        <div class="navbar-container">
-            <div class="nav-item">
-                <div class="search-toggle">
-                    <mat-form-field class="search-input" floatLabel="never" [ngClass]="{'filled': searchString.length > 0}">
-                        <input matInput type="text" placeholder="Search..." [(ngModel)]="searchString">
-                        <button mat-button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear" (click)="searchString=''">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-form-field>
-                    <mat-icon class="search-icon">search</mat-icon>
-                </div>
-            </div>
-            <div class="nav-item">
-                <button mat-icon-button aria-label="fullscreen" appToggleFullscreen (click)="ToggleClass()">
-                    <mat-icon>fullscreen</mat-icon>
-                </button>
-                <button mat-icon-button [matMenuTriggerFor]="menu_language">
-                    <mat-icon>flag</mat-icon>
-                </button>
-                <mat-menu #menu_language="matMenu">
-                    <button mat-menu-item>English</button>
-                    <button mat-menu-item>French</button>
-                    <button mat-menu-item>Spanish</button>
-                </mat-menu>
-                <button mat-icon-button [matMenuTriggerFor]="menu_user">
-                    <mat-icon>people</mat-icon>
-                </button>
-                <mat-menu #menu_user="matMenu">
-                    <button mat-menu-item>Profile</button>
-                    <button mat-menu-item>Logout</button>
-                </mat-menu>
-            </div>
-        </div>
+      </div>
+      <div class="nav-item">
+        <button mat-icon-button aria-label="fullscreen" appToggleFullscreen (click)="ToggleClass()">
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu_language">
+          <mat-icon>flag</mat-icon>
+        </button>
+        <mat-menu #menu_language="matMenu">
+          <button mat-menu-item>English</button>
+          <button mat-menu-item>French</button>
+          <button mat-menu-item>Spanish</button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="menu_user">
+          <mat-icon>people</mat-icon>
+        </button>
+        <mat-menu #menu_user="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+      </div>
+    </div>
 
-    </header>
+  </header>
 </nav>
 <!-- Navbar (Header) Ends -->

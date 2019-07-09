@@ -1,0 +1,31 @@
+.competition {
+  &.featured {
+    .link-competition{
+      color: inherit;
+      text-decoration: none;
+    }
+    .row--comp {
+      width: 100%;
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .mdc-card {
+        display: flex;
+        margin: 5px 5px;
+        figure {
+          margin: 15px;
+          width: 180px;
+          overflow: hidden;
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .card-primary {
+          padding: 6px 10px 6px 15px;
+        }
+      }
+    }
+  }
+}

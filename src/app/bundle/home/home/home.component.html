@@ -1,103 +1,43 @@
-<fafa-container>
-    <fafa-container-header>
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip>Homepage</mat-chip>/
-            <mat-chip color="primary" selected>Teams</mat-chip>
-        </mat-chip-list>
-    </fafa-container-header>
-    <fafa-container-content>
+<app-fafa-container>
+    <app-fafa-container-header>
+        <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+    </app-fafa-container-header>
+    <app-fafa-container-content>
+        <mat-progress-bar *ngIf="competitions.length<1" mode="indeterminate"></mat-progress-bar>
+        <div class="competition featured" *ngIf="competitions.length>0">
+            <div class="row">
+                <h3 class="mdc-typography--headline5"> {{ 'Featured competitions' | translate }}</h3>
+            </div>
+            <div class="row--comp">
+                <ng-container *ngFor="let competition of competitions">
+                    <a class="link-competition" (click)="activeCompetition(competition)">
+                        <div class="mdc-card">
+                            <div class="mdc-card__primary-action">
+                                <div class="mdc-card-media">
+                                    <figure class="competition">
+                                        <img src="{{ prepareImageSrc(competition.image) }}">
+                                    </figure>
+                                </div>
+                                <div class="card-primary">
+                                    <h3 class="mdc-typography mdc-typography--headline6">{{competition.name}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </ng-container>
+            </div>
+        </div>
         <div class="federation">
+            <div class="row">
+                <h3 class="mdc-typography--headline5"> {{ 'Federations' | translate }}</h3>
+            </div>
             <div class="row">
                 <app-wdg-federation [size]="4"></app-wdg-federation>
             </div>
         </div>
-        <!--  Card sample starts-->
-        <section class="component-section col-sm-4">
-            <div class="section-header">
-            </div>
-            <div class="component-wrapper card-component-wrapper">
-                <div class="mdc-card">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="mdc-card__media mdc-card__media--16-9 demo-card__media"></div>
-                        <div class="demo-card__primary">
-                            <h3 class="demo-card__subtitle mdc-typography mdc-typography--overline">Overline</h3>
-                            <h2 class="demo-card__title mdc-typography mdc-typography--headline6">Headline 6</h2>
-                        </div>
-                        <div class="demo-card__secondary mdc-typography mdc-typography--body2">Lorem ipsum dolor sit
-                            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
-                        </div>
-                    </div>
-                    <div class="mdc-card__actions">
-                        <div class="mdc-card__action-buttons">
-                            <button class="mdc-button mdc-card__action mdc-card__action--button">Button</button>
-                            <button class="mdc-button mdc-card__action mdc-card__action--button">Button</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--  Card sample ends-->
 
-        <!-- Featured players Starts-->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card-deck-wrapper">
-                    <div class="card-deck">
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-top img-fluid" src="assets/img/photos/05.jpg"
-                                     alt="Card image cap"/>
-                                <div class="card-block">
-                                    <h4 class="card-title">Card title</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-top img-fluid" src="assets/img/photos/05.jpg"
-                                     alt="Card image cap"/>
-                                <div class="card-block">
-                                    <h4 class="card-title">Card title</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-top img-fluid" src="assets/img/photos/05.jpg"
-                                     alt="Card image cap"/>
-                                <div class="card-block">
-                                    <h4 class="card-title">Card title</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-top img-fluid" src="assets/img/photos/05.jpg"
-                                     alt="Card image cap"/>
-                                <div class="card-block">
-                                    <h4 class="card-title">Card title</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-top img-fluid" src="assets/img/photos/05.jpg"
-                                     alt="Card image cap"/>
-                                <div class="card-block">
-                                    <h4 class="card-title">Card title</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Featured players Ends-->
-
-
-    </fafa-container-content>
-</fafa-container>
+    </app-fafa-container-content>
+</app-fafa-container>
 
 
 

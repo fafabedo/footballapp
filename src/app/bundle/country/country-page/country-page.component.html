@@ -1,119 +1,92 @@
-<fafa-container>
-    <fafa-container-header>
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip>Homepage</mat-chip>/
-            <mat-chip>Countries</mat-chip>/
-            <mat-chip color="primary" selected>Italy</mat-chip>
-        </mat-chip-list>
-    </fafa-container-header>
-    <fafa-container-content>
+<app-fafa-container>
+    <app-fafa-container-header>
+        <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+    </app-fafa-container-header>
+    <app-fafa-container-content>
         <section>
-            <div class="row">
+            <mat-progress-bar *ngIf="!country" mode="indeterminate"></mat-progress-bar>
+            <div class="row" *ngIf="country">
                 <div class="col-sm-4 col-12">
-                    <div class="card horizontal">
-                        <div class="card-body">
-                            <div class="card-img">
-                                <figure>
-                                    <img class="card-img-top img-fluid"
-                                         src="http://apifootball.local/files//country-flags/svg/it.svg"
-                                         alt="Card image cap">
-                                </figure>
-                            </div>
-                            <div class="card-stacked align-self-center">
-                                <div class="px-1" *ngIf="country">
-                                    <h1 class="card-title font-large-1">{{ country.name }}</h1>
-                                    <div class="card-text">
-                                        <ul>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <app-country-card [country]="country"></app-country-card>
+                </div>
+                <div class="col-sm-4 col-12">
+                    <div class="component-wrapper">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+                            <li class="mdc-list-item" tabindex="0">
+                                <mat-chip color="primary" selected>14</mat-chip>
+                                <span class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">World cup participation</span>
+                                </span>
+                            </li>
+                            <li class="mdc-list-item" tabindex="1">
+                                <mat-chip color="primary" selected>4</mat-chip>
+                                <span class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">World cup champions</span>
+                                </span>
+                            </li>
+                            <li class="mdc-list-item" tabindex="2">
+                                <mat-chip color="primary" selected>8</mat-chip>
+                                <span class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">Ranking</span>
+                                </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-4 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge bg-danger float-right">1</span> World cups
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge bg-info float-right">7</span> Competitions
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge bg-info float-right">2</span> Cups
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-block">
-                                <!--                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5"></agm-map>-->
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
-
         <section id="competition" class="country-competition">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h1 class="card-title">{{ 'Competitions' | translate }}</h1>
-                        </div>
-                    </div>
+                <div class="row">
+                    <h3 class="mdc-typography--headline5"> {{ 'Competitions' | translate }}</h3>
                 </div>
             </div>
             <div class="row" *ngFor="let row of competitions | chunk: 6">
                 <div class="col-sm-2 col-12" *ngFor="let competition of row">
-                    <a class="link-competition" (click)="navigateCompetition(competition)">
-                        <div class="card">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <div class="card-block">
-                                        <figure class="fig-competition">
-                                            <img src="{{ competition.image | imageSrc }}" alt="{{ competition.name }}"
-                                                 class="mb-1">
-                                        </figure>
-                                        <h3 class="card-title">{{ competition.name }}</h3>
+                        <div class="card-wrapper">
+                            <div class="mdc-card">
+                                <a class="link-competition" (click)="navigateCompetition(competition)">
+                                    <div class="mdc-card__primary-action">
+                                        <div class="mdc-card__media mdc-card__media--square"
+                                             [style.backgroundImage]="'url(' + (competition.image | imageSrc) + ')'">
+                                        </div>
+                                        <div class="card__primary">
+                                            <h2 class="card__title mdc-typography mdc-typography--headline5">{{competition.name}}</h2>
+                                        </div>
                                     </div>
+                                </a>
+                                <div class="mdc-card__actions">
+                                    <mat-slide-toggle
+                                            (change)="featuring($event, competition)"
+                                            [color]="'primary'"
+                                            [checked]="competition.isFeatured">
+                                        {{ 'Featured' | translate }}
+                                    </mat-slide-toggle>
                                 </div>
                             </div>
                         </div>
-                    </a>
                 </div>
             </div>
         </section>
 
         <section id="international" class="country-international">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h1 class="card-title">{{ 'National teams' | translate }}</h1>
-                        </div>
-                    </div>
+                <div class="row">
+                    <h3 class="mdc-typography--headline5"> {{ 'National teams' | translate }}</h3>
                 </div>
             </div>
             <div class="row" *ngFor="let row of teams | chunk: 6">
                 <div class="col-sm-2 col-12" *ngFor="let team of row">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="px-3 py-3">
-                                <div class="media">
-                                    <div class="media-body text-left">
-                                        <span>{{ team.name }}</span>
-                                    </div>
-                                    <div class="media-right align-self-center">
-                                        <i class="ft-aperture font-large-1 float-right"></i>
-                                    </div>
+                    <div class="card-wrapper">
+                        <div class="mdc-card">
+                            <div class="mdc-card__primary-action">
+                                <div class="mdc-card__media mdc-card__media--square"
+                                     [style.backgroundImage]="'url(' + (team.image | imageSrc) + ')'">
+                                </div>
+                                <div class="card__primary">
+                                    <h2 class="card__title mdc-typography mdc-typography--headline5">{{team.name}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -121,5 +94,5 @@
                 </div>
             </div>
         </section>
-    </fafa-container-content>
-</fafa-container>
+    </app-fafa-container-content>
+</app-fafa-container>

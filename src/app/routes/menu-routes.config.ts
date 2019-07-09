@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     },
     {
         id: 'menu.main.country',
-        path: '/country',
+        path: '/countries',
         title: 'Countries',
         icon: 'flag',
         class: '',
@@ -27,9 +27,9 @@ export const ROUTES: RouteInfo[] = [
     },
     {
         id: 'menu.main.team',
-        path: '/teams',
-        title: 'Teams',
-        icon: 'people',
+        path: '/federations',
+        title: 'Federations',
+        icon: 'explore',
         class: '',
         badge: '',
         badgeClass: '',
@@ -39,8 +39,8 @@ export const ROUTES: RouteInfo[] = [
         context: 'competition'
     },
     {
-        path: 'https://fabricio.bedoyatech.ca/',
-        title: 'Support',
+        path: 'https://wwww.bedoyatech.ca/',
+        title: 'BT',
         icon: 'link',
         class: '',
         badge: '',

@@ -19,7 +19,7 @@ export class ConfigService {
 
   put(config: Config): Observable<Config> {
     const url = this.apiPlatform.getApiPlatformResource('configs/' + config.id);
-    return this.http.put<Config[]>(url, config)
+    return this.http.put<Config>(url, config)
       .catch(err => this.handleError(err));
   }
 

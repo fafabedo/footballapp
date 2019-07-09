@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {ThemesService} from '../core/themes/themes.service';
 import {SettingsService} from '../core/settings/settings.service';
 
@@ -18,7 +18,6 @@ export class LayoutComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
     this.screenWidth = window.innerWidth;
-    console.log(this.screenWidth);
   }
 
   constructor(private settingsService: SettingsService,

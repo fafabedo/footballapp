@@ -11,7 +11,7 @@ export class CompetitionSeasonService {
               private apiPlatform: ApiPlatformService) {
   }
 
-  getCompetitionSeasonTable(competitionSeasonId: number): Observable<Competition[]> {
+  getCompetitionSeasonTable(competitionSeasonId: string): Observable<Competition[]> {
     const url = this.apiPlatform.getApiPlatformResource('competition_season_tables');
     const params = {pagination: 'false'};
     if (competitionSeasonId) {
@@ -21,7 +21,7 @@ export class CompetitionSeasonService {
       .catch(err => this.handleError(err));
   }
 
-  getCompetitionSeasonTeams(competitionSeasonId: number): Observable<CompetitionSeasonTeam[]> {
+  getCompetitionSeasonTeams(competitionSeasonId: string): Observable<CompetitionSeasonTeam[]> {
     const url = this.apiPlatform.getApiPlatformResource(`competition_seasons/${competitionSeasonId}/competition_season_teams`);
     const params = {pagination: 'false'};
     return this.http.get<CompetitionSeasonTeam[]>(url, {params})

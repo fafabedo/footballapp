@@ -11,7 +11,7 @@ export const routes = [
         children: [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', loadChildren: './../bundle/home/home.module#HomeModule'},
-            {path: 'country', loadChildren: './../bundle/country/country.module#CountryModule'},
+            {path: 'countries', loadChildren: './../bundle/country/country.module#CountryModule'},
             {path: 'competition', loadChildren: './../bundle/competition/competition.module#CompetitionModule'},
             {path: 'config', loadChildren: './../bundle/config/config.module#ConfigModule'}
         ]

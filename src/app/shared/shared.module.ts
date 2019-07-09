@@ -19,6 +19,7 @@ import {ChunkPipe} from './pipes/chunk/chunk.pipe';
 import {ImageSrcPipe} from './pipes/imagesrc/imagesrc.pipe';
 import {MaterialModule} from './material/material.module';
 import {FafaContainerModule} from './components/fafa-container/fafa-container.module';
+import {FafaBreadcrumbModule} from './components/fafa-breadcrumb/fafa-breadcrumb.module';
 
 
 const PIPES = [
@@ -46,6 +47,7 @@ const COMPONENTS = [
     TranslateModule,
     NgbModule,
     FafaContainerModule,
+    FafaBreadcrumbModule,
     MaterialModule,
   ],
   providers: [
@@ -64,6 +66,7 @@ const COMPONENTS = [
     NgbModule,
     MaterialModule,
     FafaContainerModule,
+    FafaBreadcrumbModule,
     ...PIPES,
     ...COMPONENTS,
   ]

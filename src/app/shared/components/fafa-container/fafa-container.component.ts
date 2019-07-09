@@ -1,8 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'fafa-container',
+  selector: 'app-fafa-container',
   encapsulation: ViewEncapsulation.None,
   templateUrl: 'fafa-container.component.html',
   styleUrls: ['fafa-container.component.scss']

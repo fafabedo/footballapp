@@ -1,33 +1,23 @@
-<fafa-container>
-    <fafa-container-header>
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip>Homepage</mat-chip>/
-            <mat-chip color="primary" selected>Countries</mat-chip>
-        </mat-chip-list>
-    </fafa-container-header>
-    <fafa-container-content>
-        <mat-tab-group>
+<app-fafa-container>
+    <app-fafa-container-header>
+        <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+    </app-fafa-container-header>
+    <app-fafa-container-content>
+        <mat-tab-group *ngIf="federations">
             <mat-tab label="{{ 'All' | translate }}">
-                <div class="row" *ngIf="countries">
-                    <div class="col-sm-12">
-                        <div class="card-deck" *ngFor="let row of countries | chunk: 4">
-                            <app-country-card *ngFor="let country of row" [country]="country"
-                                              class="card"></app-country-card>
-                        </div>
-                    </div>
+                <div class="country-list" *ngIf="countries">
+                    <app-country-card *ngFor="let country of countries" [country]="country"></app-country-card>
                 </div>
             </mat-tab>
-            <mat-tab *ngFor="let item of table" label="{{ item.federation }}">
-                <div class="row" *ngIf="item.countries">
-                    <div class="col-sm-12">
-                        <div class="card-deck" *ngFor="let row of item.countries | chunk: 4">
-                            <app-country-card *ngFor="let country of row" [country]="country" class="card">
-                            </app-country-card>
-                        </div>
-                    </div>
+            <ng-container *ngFor="let federation of federations">
+                {{federation.shortname}}
+            </ng-container>
+            <mat-tab *ngFor="let federation of federations" label="{{ federation.shortname }}">
+                <div class="country-list" *ngIf="countries">
+                    <app-country-card *ngFor="let country of filterCountries(federation)" [country]="country"></app-country-card>
                 </div>
             </mat-tab>
         </mat-tab-group>
-    </fafa-container-content>
-</fafa-container>
+    </app-fafa-container-content>
+</app-fafa-container>
 

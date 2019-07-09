@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,7 +44,10 @@ export function createTranslateLoader(http: HttpClient) {
         }),
     ],
     providers: [ApiPlatformService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [
+      NO_ERRORS_SCHEMA
+    ]
 })
 export class AppModule {
 }

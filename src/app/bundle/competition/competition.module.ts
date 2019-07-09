@@ -21,6 +21,7 @@ const routes: Routes = [
       {path: 'table', component: CompetitionTableComponent},
       {path: 'matches', component: CompetitionMatchesComponent},
       {path: 'settings', component: CompetitionSettingsComponent},
+      {path: 'close', component: CompetitionHomeComponent},
     ]
   }
 ];

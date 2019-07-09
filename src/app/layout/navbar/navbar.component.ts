@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 import {TranslateService} from '@ngx-translate/core';
 import {UserService} from '../../bundle/user/service/user.service';
 import {Router} from '@angular/router';
+import {CompetitionService} from '../../bundle/competition/service/competition.service';
+import {Competition} from '@app/api-platform/interfaces/competition';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +21,8 @@ export class NavbarComponent {
 
   constructor(public translate: TranslateService,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private competitionService: CompetitionService) {
     // const browserLang: string = translate.getBrowserLang();
     // translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'es');
   }
@@ -57,6 +60,10 @@ export class NavbarComponent {
       }
     }
     return '';
+  }
+
+  getCompetition(): Competition {
+    return this.competitionService.getActive();
   }
 
   logout() {

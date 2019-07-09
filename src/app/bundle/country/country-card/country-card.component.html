@@ -1,15 +1,14 @@
-<a (click)="navigate(country)">
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">{{country.name}}</h4>
-    </div>
-    <div class="card-body">
-        <figure *ngIf="country.image">
-            <img class="card-img-top img-fluid" src="{{ country.image | imageSrc }}" alt="{{country.name}}" />
-        </figure>
-        <div class="card-block">
-            <p class="card-text" *ngIf="country.federation">{{country.federation.shortname}}</p>
+<a [routerLink]="[country.id]">
+    <div class="card-wrapper">
+        <div class="mdc-card">
+            <div class="mdc-card__primary-action">
+                <div class="mdc-card__media mdc-card__media--16-9 demo-card__media"
+                     [style.backgroundImage]="'url(' + (country.image | imageSrc) + ')'">
+                </div>
+                <div class="card__primary">
+                    <h2 class="card__title mdc-typography mdc-typography--headline6">{{country.name}}</h2>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </a>
