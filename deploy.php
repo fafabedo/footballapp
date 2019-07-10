@@ -34,8 +34,10 @@ host('footballfc.com')
   ->set('deploy_path', '/var/www/{{application}}');
 
 // Tasks
-task('ng:build', '
+task('yarn:install', '
   /usr/bin/yarn
+');
+task('ng:build', '
   /usr/bin/ng build --prod
 ');
 
@@ -53,6 +55,7 @@ task('deploy', [
   'deploy:unlock',
   'cleanup',
   'success',
+  'yarn:install',
   'ng:build'
 ]);
 

@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 export const API_PLATFORM = {
-    api_resource: 'http://apifootball.local',
-    version: 'v1',
-    format: 'json',
-    doc: 'http://apifootball.local/v1/',
+    api_resource: environment.apiURL,
+    version: environment.apiVersion,
+    format: environment.format,
+    doc: environment.apiDocURL,
     images: {
         base_url: 'files'
     }
