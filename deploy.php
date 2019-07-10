@@ -34,8 +34,9 @@ host('footballfc.com')
   ->set('deploy_path', '/var/www/{{application}}');
 
 // Tasks
-task('delete_source', '
-  rm -rf ./src
+task('ng:build', '
+  /usr/bin/yarn
+  /usr/bin/ng build --prod
 ');
 
 desc('Deploy FootballFC.com');
@@ -52,7 +53,7 @@ task('deploy', [
   'deploy:unlock',
   'cleanup',
   'success',
-  'delete_source'
+  'ng:build'
 ]);
 
 // [Optional] If deploy fails automatically unlock.
