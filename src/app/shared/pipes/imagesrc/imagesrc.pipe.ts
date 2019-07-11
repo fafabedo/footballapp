@@ -1,10 +1,10 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {ApiPlatformService} from '@app/api-platform/api-platform.service';
+import {environment} from '../../../../environments/environment';
 
 @Pipe({name: 'imageSrc'})
 export class ImageSrcPipe implements PipeTransform {
-    constructor(private apiPlatformService: ApiPlatformService) {}
+    constructor() {}
     transform(value: any): string {
-        return this.apiPlatformService.getApiPlatformPathFiles(value);
+      return environment.files.prefix + value + environment.files.suffix;
     }
 }

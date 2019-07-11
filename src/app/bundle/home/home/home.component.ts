@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer,
               private router: Router,
-              private competitionService: CompetitionService,
-              private apiPlatform: ApiPlatformService) {}
+              private competitionService: CompetitionService) {}
 
   ngOnInit() {
     this.competitionService
@@ -39,10 +38,6 @@ export class HomeComponent implements OnInit {
     // $.getScript('./assets/js/coming-soon/jquery.countdown.min.js');
     // coming soon JS start working after page load
     // $.getScript('./assets/js/coming-soon/coming-soon.js');
-  }
-
-  prepareImageSrc(src: string): string {
-    return this.apiPlatform.getApiPlatformPathFiles(src);
   }
 
   sanitizeImage(src: string) {

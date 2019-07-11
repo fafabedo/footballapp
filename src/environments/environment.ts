@@ -4,10 +4,22 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://apifootball.local',
-  apiDocURL: 'http://apifootball.local/v1',
-  apiVersion: 'v1',
-  format: 'json'
+  api: {
+    url: 'http://apifootball.local',
+    version: 'v1',
+    format: 'json'
+  },
+  cms: {
+    url: '',
+    format: 'json'
+  },
+  doc: {
+    url: 'http://apifootball.local/v1'
+  },
+  files: {
+    prefix: 'http://apifootball.local/files',
+    suffix: ''
+  }
 };
 
 /*

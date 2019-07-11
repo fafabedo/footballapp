@@ -3,6 +3,7 @@ import {Country} from '@app/api-platform/interfaces/country';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ApiPlatformService} from '@app/api-platform/api-platform.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-country-card',
@@ -24,7 +25,7 @@ export class CountryCardComponent implements OnInit {
   }
 
   sanitizeImage(src: string) {
-    const source = this.apiPlatform.getApiPlatformPathFiles(src);
+    const source = environment.files + src;
     return this.sanitizer.bypassSecurityTrustResourceUrl(source);
   }
 }

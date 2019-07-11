@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FederationService} from '../service/federation.service';
 import {Federation} from '@app/api-platform/interfaces/federation';
-import {API_PLATFORM, ApiPlatformService} from '@app/api-platform/api-platform.service';
 
 @Component({
     selector: 'app-wdg-federation',
@@ -12,13 +11,10 @@ import {API_PLATFORM, ApiPlatformService} from '@app/api-platform/api-platform.s
 export class FederationWidgetComponent implements OnInit {
     federations: Array<Federation> = [];
     chunkedArr: Array<Array<Federation>> = [];
-    baseFileUrl = '';
     attributes = 'cols-sm-6';
     @Input() size = 4;
 
-    constructor(private federationService: FederationService,
-                private apiPlatform: ApiPlatformService) {
-        this.baseFileUrl = API_PLATFORM.api_resource;
+    constructor(private federationService: FederationService) {
     }
 
     ngOnInit() {
@@ -45,9 +41,5 @@ export class FederationWidgetComponent implements OnInit {
             chunkedArr.push(copied.splice(0, this.size));
         }
         return chunkedArr;
-    }
-
-    prepareImageSrc(src: string): string {
-        return this.apiPlatform.getApiPlatformPathFiles(src);
     }
 }

@@ -46,7 +46,6 @@ export class CountryListComponent implements OnInit {
       }
     });
     this.countries = countries.filter(country => country.active === true);
-    console.log(this.countries);
   }
 
   filterCountries(f: Federation): Array<Country> {
