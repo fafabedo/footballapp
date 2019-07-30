@@ -3,7 +3,7 @@ import {CompetitionSeasonService} from '../service/competition-season.service';
 import {TeamService} from '../../team/service/team.service';
 import {Team} from '@app/api-platform/interfaces/team';
 import {CompetitionSeasonTable} from '@app/api-platform/interfaces/competitionseasontable';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CompetitionService} from '../service/competition.service';
 import {BreadcrumbItem} from '../../../shared/components/fafa-breadcrumb/breadcrumbitem';
 
@@ -15,6 +15,8 @@ import {BreadcrumbItem} from '../../../shared/components/fafa-breadcrumb/breadcr
 })
 export class CompetitionTableComponent implements OnInit {
   competitionSeasonTables: Array<CompetitionSeasonTable> = [];
+  competitionId: string;
+  seasonId: string;
   teams: Array<Team> = [];
   sorts = [
     {prop: 'position', dir: 'ASC'}
@@ -23,7 +25,7 @@ export class CompetitionTableComponent implements OnInit {
   breadcrumb: Array<BreadcrumbItem> = [
     {
       title: 'Home',
-      path: ['/competition/3486/home']
+      path: ['/competition/home']
     },
     {
       title: 'Table',
@@ -33,20 +35,24 @@ export class CompetitionTableComponent implements OnInit {
   rows: Array<any> = [];
   matchDay = 1;
 
-  constructor(private competitionSeasonService: CompetitionSeasonService,
+  constructor(private router: Router,
+              private competitionSeasonService: CompetitionSeasonService,
               private teamService: TeamService,
               private competitionService: CompetitionService,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    const competitionId = this.activatedRoute.snapshot.paramMap.get('id');
-    const seasonId = this.competitionService.activeSeason.id;
+    if (!this.competitionService.activeCompetition || !this.competitionService.activeSeason) {
+      this.router.navigate(['home']);
+    }
+    this.competitionId = this.competitionService.activeCompetition.id;
+    this.seasonId = this.competitionService.activeSeason.id;
     this.teamService.getTeams()
       .subscribe(teams => {
         this.teams = teams;
         this.competitionSeasonService
-          .getCompetitionSeasonTable(competitionId, seasonId)
+          .getCompetitionSeasonTable(this.competitionId, this.seasonId)
           .subscribe(competitionSeasonTables => this.prepareTable(competitionSeasonTables));
       });
 

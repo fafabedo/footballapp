@@ -7,6 +7,7 @@ import {CompetitionSeasonMatch} from '@app/api-platform/interfaces/competitionse
 import {CompetitionService} from '../service/competition.service';
 import {TeamService} from '../../team/service/team.service';
 import {Team} from '@app/api-platform/interfaces/team';
+import {CompetitionSeasonTeam} from '@app/api-platform/interfaces/competitionseasonteam';
 
 @Component({
   selector: 'app-competition-matches',
@@ -17,12 +18,14 @@ import {Team} from '@app/api-platform/interfaces/team';
 export class CompetitionMatchesComponent implements OnInit {
   competitionSeason: CompetitionSeason;
   competitionSeasonMatches: Array<CompetitionSeasonMatch>;
+  competitionId: string;
+  seasonId: string;
   matchDays: Array<number> = [];
   teams: Array<Team> = [];
   breadcrumb: Array<BreadcrumbItem> = [
     {
       title: 'Home',
-      path: ['/competition/3486/home']
+      path: ['/competition/home']
     },
     {
       title: 'Matches',
@@ -38,14 +41,19 @@ export class CompetitionMatchesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const competitionId = this.activatedRoute.snapshot.paramMap.get('id');
-    const seasonId = this.competitionService.activeSeason.id;
-    this.breadcrumb[0].path = ['/competition', seasonId, 'home'];
+    if (!this.competitionService.activeCompetition || !this.competitionService.activeSeason) {
+      this.router.navigate(['home']);
+    }
+    this.competitionId = this.competitionService.activeCompetition.id;
+    this.seasonId = this.competitionService.activeSeason.id;
     this.competitionSeasonService
-      .get(seasonId)
+      .get(this.seasonId)
       .subscribe(season => this.competitionSeason = season);
     this.competitionSeasonService
-      .getCompetitionSeasonMatches(competitionId, seasonId)
+      .getCompetitionSeasonTeams(this.competitionId, this.seasonId)
+      .subscribe(cTeams => this.prepareTeams(cTeams));
+    this.competitionSeasonService
+      .getCompetitionSeasonMatches(this.competitionId, this.seasonId)
       .subscribe(competitionSeasonMatches => this.prepareMatches(competitionSeasonMatches));
   }
 
@@ -57,11 +65,21 @@ export class CompetitionMatchesComponent implements OnInit {
       }
     });
     this.competitionSeasonMatches = competitionSeasonMatches;
-    console.log(this.competitionSeasonMatches);
+    // console.log(this.competitionSeasonMatches);
+  }
+
+  prepareTeams(competitionSeasonTeams: CompetitionSeasonTeam[]) {
+    competitionSeasonTeams.forEach(cTeam => {
+      this.teams.push(cTeam.team);
+    });
   }
 
   getMatchesByDay(day: number): CompetitionSeasonMatch[] {
     return this.competitionSeasonMatches.filter(match => match.matchDay === day);
+  }
+
+  getTeam(id): Team {
+    return this.teams.find(team => team.id === id);
   }
 
   openMatch(match: CompetitionSeasonMatch) {

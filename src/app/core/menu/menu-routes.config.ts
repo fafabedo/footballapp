@@ -34,7 +34,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.home',
-    path: '/competition/{id}/home',
+    path: '/competition/home',
     title: 'Home',
     icon: 'home',
     isExternalLink: false,
@@ -44,7 +44,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.matches',
-    path: '/competition/{id}/matches',
+    path: '/competition/matches',
     title: 'Matches',
     icon: 'calendar_today',
     isExternalLink: false,
@@ -54,7 +54,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.table',
-    path: '/competition/{id}/table',
+    path: '/competition/table',
     title: 'Table',
     icon: 'table_chart',
     isExternalLink: false,
@@ -64,7 +64,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.stats',
-    path: '/competition/{id}/stats',
+    path: '/competition/stats',
     title: 'Stats',
     icon: 'insert_chart',
     isExternalLink: false,
@@ -74,7 +74,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.settings',
-    path: '/competition/{id}/settings',
+    path: '/competition/settings',
     title: 'Settings',
     icon: 'settings',
     isExternalLink: false,
@@ -84,7 +84,7 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     id: 'menu.competition.close',
-    path: '/competition/{id}/close',
+    path: '/competition/close',
     title: 'Return',
     icon: 'undo',
     isExternalLink: false,

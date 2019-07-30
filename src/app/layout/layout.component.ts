@@ -60,7 +60,7 @@ export class LayoutComponent implements OnInit {
   buildMenu() {
     if (this.competitionService.activeCompetition) {
       this.menuService.context = this.menuService.COMPETITION;
-      this.menuService.contextId = this.competitionService.activeCompetition.id;
+      this.menuService.contextId = this.competitionService.activeSeason.id;
     } else {
       delete this.menuService.context;
       delete this.menuService.contextId;

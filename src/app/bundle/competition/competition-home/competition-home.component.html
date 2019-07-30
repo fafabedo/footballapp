@@ -25,7 +25,7 @@
       <h3 class="mdc-typography--headline5"> {{ 'Teams' | translate }}</h3>
     </div>
     <div class="team-carousel">
-      <a class="link-team" [routerLink]="['/competition', competitionId, 'team', competition_team.team.id]" *ngFor="let competition_team of competitionSeasonTeams">
+      <a class="link-team" [routerLink]="['/competition/team', competition_team.team.id]" *ngFor="let competition_team of competitionSeasonTeams">
         <div class="mdc-card team-card">
           <div class="mdc-card__primary-action">
             <div class="mdc-card-media">

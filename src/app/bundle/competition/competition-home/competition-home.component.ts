@@ -38,17 +38,20 @@ export class CompetitionHomeComponent implements OnInit {
     const segment = this.activatedRoute.snapshot.url[0].path;
     if (segment === 'close') {
       this.competitionService.unsetActive();
-      delete this.competitionService.activeSeason;
       this.router.navigate(['home']);
+    } else {
+      if (!this.competitionService.activeCompetition || !this.competitionService.activeSeason) {
+        this.router.navigate(['home']);
+      }
+      this.competitionId = this.competitionService.activeCompetition.id;
+      this.seasonId = this.competitionService.activeSeason.id;
+      this.competitionSeasonService
+        .getCompetitionSeasons(this.competitionId)
+        .subscribe(seasons => this.competitionSeasons = seasons);
+      this.competitionSeasonService
+        .getCompetitionSeasonTeams(this.competitionId, this.seasonId)
+        .subscribe(cTeams => this.prepareTeams(cTeams));
     }
-    this.seasonId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.competitionId = this.competitionService.activeCompetition.id;
-    this.competitionSeasonService
-      .getCompetitionSeasons(this.competitionId)
-      .subscribe(seasons => this.competitionSeasons = seasons);
-    this.competitionSeasonService
-      .getCompetitionSeasonTeams(this.competitionId, this.seasonId)
-      .subscribe(cTeams => this.prepareTeams(cTeams));
   }
 
   prepareTeams(competitionSeasonTeams: CompetitionSeasonTeam[]) {

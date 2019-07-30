@@ -3,7 +3,7 @@
     <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
   </app-fafa-container-header>
   <app-fafa-container-content>
-    <mat-progress-bar *ngIf="matchDays.length < 1" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="matchDays.length < 1 || teams.length < 1" mode="indeterminate"></mat-progress-bar>
     <div class="main--container">
       <div class="match-content" *ngIf="matchDays">
         <ng-container *ngFor="let day of matchDays">
@@ -19,7 +19,7 @@
                       </div>
                       <div class="team-home-logo logo">
                         <figure>
-                          <img src="{{ match.competitionSeasonMatchTeams[0].team.image | imageSrc }}">
+                          <img src="{{ getTeam(match.competitionSeasonMatchTeams[0].team.id).image | imageSrc }}">
                         </figure>
                       </div>
                       <div class="team-home-score score">
@@ -39,7 +39,7 @@
                       </div>
                       <div class="team-away-logo logo">
                         <figure>
-                          <img src="{{ match.competitionSeasonMatchTeams[1].team.image | imageSrc }}">
+                          <img src="{{ getTeam(match.competitionSeasonMatchTeams[1].team.id).image | imageSrc }}">
                         </figure>
                       </div>
                       <div class="team-away-score score">

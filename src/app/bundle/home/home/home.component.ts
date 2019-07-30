@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
         const activeSeasons = competitionSeasons.filter(season => season.archive === false);
         if (activeSeasons) {
           this.competitionService.setActiveCompetition(competition, activeSeasons[0]);
-          this.router.navigate(['competition', activeSeasons[0].id, 'home']);
+          this.router.navigate(['competition/home']);
         } else {
           console.log('there is no active season');
         }

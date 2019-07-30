@@ -1,9 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {MenuService} from '../../core/menu/menu.service';
 import {Competition} from '@app/api-platform/interfaces/competition';
-import {CompetitionService} from '../../bundle/competition/service/competition.service';
 import {MenuItem} from '../../core/menu/menu-item';
 
 @Component({

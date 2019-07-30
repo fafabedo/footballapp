@@ -14,21 +14,15 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {CompetitionTeamComponent} from './competition-team/competition-team.component';
 
 const routes: Routes = [
+  {path: 'home', component: CompetitionHomeComponent},
+  {path: 'table', component: CompetitionTableComponent},
+  {path: 'matches', component: CompetitionMatchesComponent},
+  {path: 'settings', component: CompetitionSettingsComponent},
+  {path: 'close', component: CompetitionHomeComponent},
   {
-    path: ':id',
+    path: 'team',
     children: [
-      {path: '', redirectTo: 'home'},
-      {path: 'home', component: CompetitionHomeComponent},
-      {path: 'table', component: CompetitionTableComponent},
-      {path: 'matches', component: CompetitionMatchesComponent},
-      {path: 'settings', component: CompetitionSettingsComponent},
-      {path: 'close', component: CompetitionHomeComponent},
-      {
-        path: 'team',
-        children: [
-          {path: ':team_id', component: CompetitionTeamComponent}
-        ]
-      },
+      {path: ':team_id', component: CompetitionTeamComponent}
     ]
   }
 ];
