@@ -1,8 +1,8 @@
 
 <mat-chip-list aria-label="Breadcrumb" *ngIf="items">
     <ng-container *ngFor="let item of items; let i = index">
-        <ng-container *ngIf="item.url && !item.active">
-            <a [routerLink]="[item.url]">
+        <ng-container *ngIf="item.path && !item.active">
+            <a [routerLink]="item.path">
             <mat-chip>{{ item.title }}</mat-chip>
             </a>/
         </ng-container>

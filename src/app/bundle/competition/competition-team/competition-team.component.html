@@ -1,0 +1,19 @@
+<app-fafa-container>
+  <app-fafa-container-header>
+    <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+    <app-fafa-container-control>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Seasons">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-container >
+          <button mat-menu-item>
+            <span></span>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </app-fafa-container-control>
+  </app-fafa-container-header>
+  <app-fafa-container-content>
+  </app-fafa-container-content>
+</app-fafa-container>

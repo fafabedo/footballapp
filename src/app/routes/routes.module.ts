@@ -22,6 +22,6 @@ import { routes } from './routes';
 
 export class RoutesModule {
     constructor(public menuService: MenuService, tr: TranslatorService) {
-        menuService.addMenu(menu);
+        // menuService.addMenu(menu);
     }
 }

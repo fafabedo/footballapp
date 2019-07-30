@@ -17,7 +17,7 @@ export class CountryListComponent implements OnInit {
   breadcrumb: Array<BreadcrumbItem> = [
     {
       title: 'Home',
-      url: '/home'
+      path: ['/home']
     },
     {
       title: 'Countries',

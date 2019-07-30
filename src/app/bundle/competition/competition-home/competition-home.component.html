@@ -1,22 +1,44 @@
-<mat-toolbar>
-    <mat-toolbar-row>
-        <span>{{ 'Competition' | translate }}</span>
-        <span class="toolbar-spacer"></span>
-        <button mat-icon-button class="toolbar-icon" aria-label="Add">
-            <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button class="toolbar-icon" aria-label="Settings">
-            <mat-icon>settings</mat-icon>
-        </button>
-    </mat-toolbar-row>
-</mat-toolbar>
 <app-fafa-container>
-    <mat-card *ngFor="let competition_team of competitionSeasonTeams">
-        <mat-card-header>
-            {{ competition_team.team.id }}
-        </mat-card-header>
-        <mat-card-content>
-            {{ competition_team.team.name }}
-        </mat-card-content>
-    </mat-card>
+  <app-fafa-container-header>
+    <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+    <app-fafa-container-control>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Seasons">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let season of competitionSeasons">
+          <button mat-menu-item>
+            <span>{{ season.startSeason | date:'y' }}</span>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </app-fafa-container-control>
+  </app-fafa-container-header>
+  <app-fafa-container-content>
+    <div class="row">
+      <h3 class="mdc-typography--headline5"> {{ 'Table top' | translate }}</h3>
+    </div>
+    <div class="row">
+      <h3 class="mdc-typography--headline5"> {{ 'Best scorers' | translate }}</h3>
+    </div>
+    <div class="row">
+      <h3 class="mdc-typography--headline5"> {{ 'Teams' | translate }}</h3>
+    </div>
+    <div class="team-carousel">
+      <a class="link-team" [routerLink]="['/competition', competitionId, 'team', competition_team.team.id]" *ngFor="let competition_team of competitionSeasonTeams">
+        <div class="mdc-card team-card">
+          <div class="mdc-card__primary-action">
+            <div class="mdc-card-media">
+              <figure class="team">
+                <img src="{{ getTeam(competition_team.team.id).image | imageSrc }}">
+              </figure>
+            </div>
+            <div class="card-primary">
+              <h3 class="mdc-typography mdc-typography--headline6">{{ competition_team.team.name }}</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </app-fafa-container-content>
 </app-fafa-container>

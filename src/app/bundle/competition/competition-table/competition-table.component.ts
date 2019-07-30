@@ -1,12 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CompetitionSeasonService} from '../service/competition-season.service';
 import {TeamService} from '../../team/service/team.service';
 import {Team} from '@app/api-platform/interfaces/team';
 import {CompetitionSeasonTable} from '@app/api-platform/interfaces/competitionseasontable';
 import {ActivatedRoute} from '@angular/router';
+import {CompetitionService} from '../service/competition.service';
+import {BreadcrumbItem} from '../../../shared/components/fafa-breadcrumb/breadcrumbitem';
 
 @Component({
   selector: 'app-competition-table',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: 'competition-table.component.html',
   styleUrls: ['competition-table.component.scss']
 })
@@ -16,21 +19,34 @@ export class CompetitionTableComponent implements OnInit {
   sorts = [
     {prop: 'position', dir: 'ASC'}
   ];
+  displayedColumns: string[] = ['position', 'team', 'matches', 'won', 'draws', 'lost', 'gf', 'ga', 'gd', 'points'];
+  breadcrumb: Array<BreadcrumbItem> = [
+    {
+      title: 'Home',
+      path: ['/competition/3486/home']
+    },
+    {
+      title: 'Table',
+      active: true
+    }
+  ];
   rows: Array<any> = [];
   matchDay = 1;
 
   constructor(private competitionSeasonService: CompetitionSeasonService,
               private teamService: TeamService,
+              private competitionService: CompetitionService,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
     const competitionId = this.activatedRoute.snapshot.paramMap.get('id');
+    const seasonId = this.competitionService.activeSeason.id;
     this.teamService.getTeams()
       .subscribe(teams => {
         this.teams = teams;
         this.competitionSeasonService
-          .getCompetitionSeasonTable(competitionId)
+          .getCompetitionSeasonTable(competitionId, seasonId)
           .subscribe(competitionSeasonTables => this.prepareTable(competitionSeasonTables));
       });
 
@@ -60,8 +76,8 @@ export class CompetitionTableComponent implements OnInit {
         position: tableItem.position,
         team: teamObj.name,
         matches: tableItem.matches,
-        won: tableItem.matchesWin,
-        draws: tableItem.matchesDraw,
+        won: tableItem.matchesWon,
+        draws: tableItem.matchesDrawn,
         lost: tableItem.matchesLost,
         gf: tableItem.goalsFor,
         ga: tableItem.goalsAgainst,

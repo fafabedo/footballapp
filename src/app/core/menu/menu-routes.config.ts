@@ -27,14 +27,14 @@ export const MenuRoutes: MenuItem[] = [
   },
   {
     path: 'https://wwww.bedoyatech.ca/',
-    title: 'BT',
+    title: 'BedoyaTech',
     icon: 'link',
     isExternalLink: true,
     submenu: []
   },
   {
     id: 'menu.competition.home',
-    path: '/competition/{id}',
+    path: '/competition/{id}/home',
     title: 'Home',
     icon: 'home',
     isExternalLink: false,
@@ -57,6 +57,16 @@ export const MenuRoutes: MenuItem[] = [
     path: '/competition/{id}/table',
     title: 'Table',
     icon: 'table_chart',
+    isExternalLink: false,
+    contextual: true,
+    context: 'competition',
+    submenu: []
+  },
+  {
+    id: 'menu.competition.stats',
+    path: '/competition/{id}/stats',
+    title: 'Stats',
+    icon: 'insert_chart',
     isExternalLink: false,
     contextual: true,
     context: 'competition',

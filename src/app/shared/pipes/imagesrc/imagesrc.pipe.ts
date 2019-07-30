@@ -5,6 +5,9 @@ import {environment} from '../../../../environments/environment';
 export class ImageSrcPipe implements PipeTransform {
     constructor() {}
     transform(value: any): string {
+      if (!value) {
+        return '';
+      }
       return environment.files.prefix + value + environment.files.suffix;
     }
 }

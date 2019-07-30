@@ -16,6 +16,7 @@ import 'hammerjs';
 import {SharedModule} from './shared/shared.module';
 import {UserModule} from './bundle/user/user.module';
 import {ApiPlatformService} from './api-platform/api-platform.service';
+import {CompetitionService} from './bundle/competition/service/competition.service';
 
 // https://github.com/ocombe/ng2-translate/issues/218
 export function createTranslateLoader(http: HttpClient) {
@@ -43,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
     ],
-    providers: [ApiPlatformService],
+    providers: [ApiPlatformService, CompetitionService],
     bootstrap: [AppComponent],
     schemas: [
       NO_ERRORS_SCHEMA

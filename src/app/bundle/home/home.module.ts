@@ -12,7 +12,7 @@ import {MatchHeightModule} from '../../shared/directives/match-height.directive'
 
 import {ArticleService} from '../news/service/article.service';
 import {FederationWidgetModule} from '../federation/federation-widget.module';
-import {CompetitionService} from '../competition/service/competition.service';
+import {CompetitionSeasonService} from '../competition/service/competition-season.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +34,7 @@ const routes: Routes = [
   providers: [
     HomepageService,
     ArticleService,
-    CompetitionService
+    CompetitionSeasonService,
   ],
   exports: [
     RouterModule

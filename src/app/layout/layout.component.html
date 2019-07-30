@@ -1,16 +1,16 @@
 <mat-sidenav-container class="sidenav-wrapper">
-    <mat-sidenav #sidenav class="side-nav"
+    <mat-sidenav class="side-nav"
                  [ngClass]="{'nav-collapsed': collapsed}"
                  mode="side"
                  (mouseenter)="toggle(false)"
                  (mouseleave)="toggle(true)"
                  [(opened)]="drawerOpened">
-        <app-sidebar [ngClass]="{'collapsed': collapsed}" [isCollapsed]="collapsed"></app-sidebar>
+        <app-sidebar #sidebar [ngClass]="{'collapsed': collapsed}" [isCollapsed]="collapsed" [menuItems]="menuItems"></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
         <app-navbar (toggleDrawer)="drawerOpened = !drawerOpened" [opened]="drawerOpened"></app-navbar>
         <div class="main-content">
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
         </div>
         <app-footer></app-footer>
     </mat-sidenav-content>

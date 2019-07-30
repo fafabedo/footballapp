@@ -1,0 +1,29 @@
+@import "~src/assets/footballapp";
+
+.table-container {
+  display: inline-flex;
+  width: 100%;
+
+  aside {
+    position: relative;
+    right: 0;
+    display: flex;
+    width: 20%;
+  }
+
+  section {
+    position: relative;
+    left: 0;
+    display: flex;
+    width: 80%;
+
+    .table-result {
+      width: 100%;
+
+      table {
+        width: 100%;
+      }
+    }
+
+  }
+}

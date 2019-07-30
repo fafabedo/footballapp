@@ -8,6 +8,7 @@ import {BreadcrumbItem} from '../../../shared/components/fafa-breadcrumb/breadcr
 import {CompetitionService} from '../../competition/service/competition.service';
 import {Competition} from '@app/api-platform/interfaces/competition';
 import {ApiPlatformService} from '@app/api-platform/api-platform.service';
+import {CompetitionSeasonService} from '../../competition/service/competition-season.service';
 
 declare var require: any;
 
@@ -29,15 +30,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer,
               private router: Router,
-              private competitionService: CompetitionService) {}
+              private competitionService: CompetitionService,
+              private competitionSeasonService: CompetitionSeasonService) {}
 
   ngOnInit() {
     this.competitionService
       .getCompetitions()
       .subscribe(competitions => this.competitions = competitions.filter(competition => competition.isFeatured === true));
-    // $.getScript('./assets/js/coming-soon/jquery.countdown.min.js');
-    // coming soon JS start working after page load
-    // $.getScript('./assets/js/coming-soon/coming-soon.js');
   }
 
   sanitizeImage(src: string) {
@@ -45,8 +44,16 @@ export class HomeComponent implements OnInit {
   }
 
   activeCompetition(competition: Competition) {
-    this.competitionService.setActive(competition);
-    this.router.navigate(['competition', competition.id]);
+    this.competitionSeasonService.getCompetitionSeasons(competition.id)
+      .subscribe(competitionSeasons => {
+        const activeSeasons = competitionSeasons.filter(season => season.archive === false);
+        if (activeSeasons) {
+          this.competitionService.setActiveCompetition(competition, activeSeasons[0]);
+          this.router.navigate(['competition', activeSeasons[0].id, 'home']);
+        } else {
+          console.log('there is no active season');
+        }
+      });
   }
 
 

@@ -1,3 +1,72 @@
-<div>
-    competition matches
-</div>
+<app-fafa-container>
+  <app-fafa-container-header>
+    <fafa-breadcrumb [items]="breadcrumb"></fafa-breadcrumb>
+  </app-fafa-container-header>
+  <app-fafa-container-content>
+    <mat-progress-bar *ngIf="matchDays.length < 1" mode="indeterminate"></mat-progress-bar>
+    <div class="main--container">
+      <div class="match-content" *ngIf="matchDays">
+        <ng-container *ngFor="let day of matchDays">
+          <h3>Match day {{ day}}</h3>
+          <div class="match-day day-{{ day }}">
+            <ng-container *ngFor="let match of getMatchesByDay(day)">
+              <article class="match" data-id="{{ match.id}}">
+                <a class="mdc-card__primary-action" (click)="openMatch(match)">
+                  <div class="match-wrapper">
+                    <div class="team-home team-wrapper">
+                      <div class="team-info team-home-name">
+                        {{ match.competitionSeasonMatchTeams[0].team.name }}
+                      </div>
+                      <div class="team-home-logo logo">
+                        <figure>
+                          <img src="{{ match.competitionSeasonMatchTeams[0].team.image | imageSrc }}">
+                        </figure>
+                      </div>
+                      <div class="team-home-score score">
+                        <span
+                          [ngClass]="{'lost': !match.competitionSeasonMatchTeams[0].isVictory }"> {{ match.competitionSeasonMatchTeams[0].score }}</span>
+                      </div>
+                      <div class="indicator">
+                        <mat-icon
+                          [style.visibility]="match.competitionSeasonMatchTeams[0].isVictory ? 'visible' : 'hidden' ">
+                          arrow_left
+                        </mat-icon>
+                      </div>
+                    </div>
+                    <div class="team-away team-wrapper">
+                      <div class="team-info team-away-name">
+                        {{match.competitionSeasonMatchTeams[1].team.name }}
+                      </div>
+                      <div class="team-away-logo logo">
+                        <figure>
+                          <img src="{{ match.competitionSeasonMatchTeams[1].team.image | imageSrc }}">
+                        </figure>
+                      </div>
+                      <div class="team-away-score score">
+                        <span
+                          [ngClass]="{'lost': !match.competitionSeasonMatchTeams[1].isVictory }">{{ match.competitionSeasonMatchTeams[1].score }}</span>
+                      </div>
+                      <div class="indicator">
+                        <mat-icon
+                          [style.visibility]="match.competitionSeasonMatchTeams[1].isVictory ? 'visible' : 'hidden'">
+                          arrow_right
+                        </mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+      <div class="navigation-sidebar">
+        <div class="calendar">
+          <ul class="days" >
+            <li *ngFor="let day of matchDays">{{day}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </app-fafa-container-content>
+</app-fafa-container>

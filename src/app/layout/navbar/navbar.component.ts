@@ -63,7 +63,7 @@ export class NavbarComponent {
   }
 
   getCompetition(): Competition {
-    return this.competitionService.getActive();
+    return this.competitionService.getActiveCompetition();
   }
 
   logout() {

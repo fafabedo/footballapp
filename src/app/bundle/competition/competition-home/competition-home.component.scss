@@ -1,0 +1,37 @@
+.team-carousel {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .team-card {
+    display: flex;
+    margin: 5px 5px;
+    //width: calc(100% / 0.25);
+
+    figure {
+      margin: 15px;
+      width: 150px;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .card-primary {
+      padding: 6px 10px 6px 15px;
+
+      h3 {
+        text-decoration: none;
+        color: inherit;
+
+        :hover {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+      }
+    }
+  }
+}
+

@@ -17,7 +17,7 @@
   <div class="nav-container">
     <ul class="navigation">
       <!-- First level menu -->
-      <li *ngFor="let menuItem of getMenu()" [routerLinkActive]="menuItem.submenu.length !== 0 ? '' : 'active'"
+      <li *ngFor="let menuItem of menuItems" [routerLinkActive]="menuItem.submenu.length !== 0 ? '' : 'active'"
           [routerLinkActiveOptions]="{exact: true}">
         <a [routerLink]="[menuItem.path]" *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
           <mat-icon>{{menuItem.icon}}</mat-icon>
@@ -84,4 +84,3 @@
     {{ 'Collapsible' | translate }}
   </mat-slide-toggle>
 </div>
-

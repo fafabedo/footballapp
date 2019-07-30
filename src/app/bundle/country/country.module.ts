@@ -8,7 +8,6 @@ import {CountryService} from './service/country.service';
 import {CountryWidgetModule} from './country-widget.module';
 import {AgmCoreModule} from '@agm/core';
 import {TeamService} from '../team/service/team.service';
-import {CompetitionService} from '../competition/service/competition.service';
 
 const routes: Routes = [
     { path: '', component: CountryListComponent },
@@ -32,7 +31,6 @@ const routes: Routes = [
     providers: [
         CountryService,
         TeamService,
-        CompetitionService,
     ],
     exports: [
         RouterModule

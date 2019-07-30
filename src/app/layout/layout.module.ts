@@ -17,7 +17,8 @@ import {CommonModule} from '@angular/common';
     SharedModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+  ],
   declarations: [
     LayoutComponent,
     FooterComponent,

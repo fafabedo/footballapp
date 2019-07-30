@@ -4,6 +4,7 @@ import {FafaContainerHeaderComponent} from './fafa-container-header/fafa-contain
 import {FafaContainerContentComponent} from './fafa-container-content/fafa-container-content.component';
 import {FafaContainerComponent} from './fafa-container.component';
 import {MatToolbarModule} from '@angular/material';
+import {FafaContainerControlComponent} from './fafa-control/fafa-container-control.component';
 
 @NgModule({
   imports: [
@@ -13,11 +14,13 @@ import {MatToolbarModule} from '@angular/material';
   declarations: [
     FafaContainerHeaderComponent,
     FafaContainerContentComponent,
+    FafaContainerControlComponent,
     FafaContainerComponent
   ],
   exports: [
     FafaContainerHeaderComponent,
     FafaContainerContentComponent,
+    FafaContainerControlComponent,
     FafaContainerComponent
   ],
   schemas: [

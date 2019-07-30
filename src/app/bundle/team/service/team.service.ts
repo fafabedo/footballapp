@@ -6,24 +6,31 @@ import {ApiPlatformService} from '@app/api-platform/api-platform.service';
 
 @Injectable()
 export class TeamService {
-    constructor(private http: HttpClient,
-                private apiPlatform: ApiPlatformService) {}
+  constructor(private http: HttpClient,
+              private apiPlatform: ApiPlatformService) {
+  }
 
-    getTeams(countryId: any = null, teamType: any = null): Observable<Team[]> {
-        const url = this.apiPlatform.getApiPlatformResource('teams');
-        const params = {'pagination': 'false'};
-        if (countryId) {
-            params['country.id'] = countryId.toString();
-        }
-        if (teamType) {
-            params['team_type.id'] = teamType.toString();
-        }
-        return this.http.get<Team[]>(url, {params: params})
-            .catch(err => this.handleError(err));
+  getTeams(countryId: any = null, teamType: any = null): Observable<Team[]> {
+    const url = this.apiPlatform.getApiPlatformResource('teams');
+    const params = {pagination: 'false'};
+    if (countryId) {
+      params['country.id'] = countryId.toString();
     }
+    if (teamType) {
+      params['team_type.id'] = teamType.toString();
+    }
+    return this.http.get<Team[]>(url, {params})
+      .catch(err => this.handleError(err));
+  }
 
-    handleError(error: any) {
-        console.error(error);
-        return Observable.of(error.message || error);
-    }
+  getTeam(teamId: string): Observable<Team> {
+    const url = this.apiPlatform.getApiPlatformResource(`teams/${teamId}`);
+    return this.http.get<Team>(url)
+      .catch(err => this.handleError(err));
+  }
+
+  handleError(error: any) {
+    console.error(error);
+    return Observable.of(error.message || error);
+  }
 }
