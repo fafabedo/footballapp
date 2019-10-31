@@ -49,7 +49,7 @@
     "screenfull": "^3.3.2",
     "sweetalert2": "^8.7.0",
     "tslib": "^1.9.0",
-    "yarn": "^1.15.2",
+    "yarn": "^1.17.3",
     "zone.js": "^0.9.0"
   },
   "devDependencies": {
